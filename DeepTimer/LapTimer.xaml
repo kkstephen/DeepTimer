@@ -1,0 +1,42 @@
+﻿<Window x:Class="DeepTimer.LapTimer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeepTimer"
+        mc:Ignorable="d"
+        Title="Lap Timer" Height="900" Width="1600" Closing="Window_Closing" WindowStyle="SingleBorderWindow" KeyDown="Window_KeyDown" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style x:Key="GridStyle" TargetType="{x:Type Grid}">
+            <Setter Property="TextElement.Foreground" Value="White"/>
+            <Setter Property="TextElement.FontFamily" Value="Amazon Ember" />
+        </Style>
+    </Window.Resources>
+    <Grid Style="{DynamicResource GridStyle}" x:Name="board">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/AWS_DeepRacer.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="147*"/>
+            <RowDefinition Height="297*"/>
+            <RowDefinition Height="308*"/>
+            <RowDefinition Height="132*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1151*"/>
+            <ColumnDefinition Width="449*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="lb_remain" HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" Text="Time Remaining" TextAlignment="Center" VerticalAlignment="Top" FontSize="32" Width="306" Height="42" Margin="0,20,0,0"/>
+        <TextBlock x:Name="lb_time" HorizontalAlignment="Center" Grid.Row="1" TextAlignment="Center" TextWrapping="Wrap" Text="03:00" VerticalAlignment="Center" FontSize="128" Height="160" Width="798"/>
+        <TextBlock HorizontalAlignment="Center" Grid.Row="2" TextWrapping="Wrap" Text="Current Lap" VerticalAlignment="Top" TextAlignment="Center" FontSize="32" Height="42" Width="306" Margin="0,10,0,0"/>
+        <TextBlock x:Name="lb_current" HorizontalAlignment="Center" Grid.Row="2" TextWrapping="Wrap" TextAlignment="Center" Text="00:00.000" VerticalAlignment="Center" FontSize="200" Width="1028" Height="256"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Right" Grid.Row="2" TextWrapping="Wrap" Text="Last" TextAlignment="Right" VerticalAlignment="Bottom" FontSize="20" Height="24" Width="80" Margin="0,0,40,160"/>
+        <TextBlock x:Name="lb_last" Grid.Column="1" TextAlignment="Right" Margin="0,0,30,177" Grid.Row="2" TextWrapping="Wrap" Text="00:00.000" VerticalAlignment="Bottom" FontSize="84" Height="103" HorizontalAlignment="Right" Width="409"/>
+        <TextBlock x:Name="lb_best" Grid.Column="1" TextAlignment="Right" Margin="0,0,30,53" Grid.Row="2" TextWrapping="Wrap" Text="00:00.000" VerticalAlignment="Bottom" FontSize="64" Height="85" HorizontalAlignment="Right" Width="329"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,40,35" Grid.Row="2" TextWrapping="Wrap" Text="Best" TextAlignment="Right" VerticalAlignment="Bottom" FontSize="20" Height="24" Width="79"/>
+        <TextBlock Grid.Column="1" HorizontalAlignment="Right" Margin="0,179,40,0" Grid.Row="1" TextWrapping="Wrap" Text="LAP" VerticalAlignment="Top" FontSize="24" Height="32" Width="60"/>
+        <TextBlock x:Name="lb_lapnum" Grid.Column="1" HorizontalAlignment="Right" Margin="0,31,40,0" Grid.Row="1" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" TextAlignment="Right" FontSize="128" Width="250" Height="160"/>
+        <TextBlock x:Name="lb_team" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="3" TextWrapping="Wrap" Text="Team" TextAlignment="Right" VerticalAlignment="Bottom" FontSize="42" Width="339" Margin="0,0,30,20" Height="56"/>
+
+    </Grid>
+</Window>

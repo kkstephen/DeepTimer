@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32616.157
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepTimer", "DeepTimer\DeepTimer.csproj", "{4043CE09-7A11-4889-BD63-F746CCA79D60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepCore", "DeepCore\DeepCore.csproj", "{62C03D83-96F7-4CDB-AA32-3C5FE405781E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepLive", "DeepLive\DeepLive.csproj", "{12599431-85EA-42B5-994E-2035F571E64E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4043CE09-7A11-4889-BD63-F746CCA79D60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4043CE09-7A11-4889-BD63-F746CCA79D60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4043CE09-7A11-4889-BD63-F746CCA79D60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4043CE09-7A11-4889-BD63-F746CCA79D60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62C03D83-96F7-4CDB-AA32-3C5FE405781E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62C03D83-96F7-4CDB-AA32-3C5FE405781E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62C03D83-96F7-4CDB-AA32-3C5FE405781E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62C03D83-96F7-4CDB-AA32-3C5FE405781E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12599431-85EA-42B5-994E-2035F571E64E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12599431-85EA-42B5-994E-2035F571E64E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12599431-85EA-42B5-994E-2035F571E64E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12599431-85EA-42B5-994E-2035F571E64E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {32D44CF0-9AFA-428D-8F7B-DC58647C8492}
+	EndGlobalSection
+EndGlobal

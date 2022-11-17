@@ -1,0 +1,16 @@
+﻿<Window x:Class="DeepTimer.NetProfile"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeepTimer"
+        mc:Ignorable="d"
+        Title="Network" Height="150" Width="400" Loaded="Window_Loaded">
+    <Grid >
+
+        <Button Content="OK" HorizontalAlignment="Left" Margin="12,0,0,20" VerticalAlignment="Bottom" Click="Button_Click" Height="31" Width="80"/>
+        <TextBox x:Name="tb_host" HorizontalAlignment="Left" Margin="10,23,0,0" TextWrapping="Wrap" Text="192.168.0.4" VerticalAlignment="Top" Width="163"/>
+        <TextBox x:Name="tb_port" HorizontalAlignment="Left" Margin="200,23,0,0" TextWrapping="Wrap" Text="3300" VerticalAlignment="Top" Width="120"/>
+
+    </Grid>
+</Window>

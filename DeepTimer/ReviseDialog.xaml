@@ -1,0 +1,19 @@
+﻿<Window x:Class="DeepTimer.ReviseDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DeepTimer"
+        mc:Ignorable="d"
+        Title="Revise Ticks" Height="200" Width="500" Loaded="Window_Loaded">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="26,26,0,0" TextWrapping="Wrap" Text="Minutes" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btn_ok" Content="Change" HorizontalAlignment="Left" Margin="26,0,0,10" Style="{DynamicResource BTN_UI}" VerticalAlignment="Bottom" Width="90" Click="btn_ok_Click"/>
+        <TextBox x:Name="tb_ns" HorizontalAlignment="Left" Margin="311,56,0,0" TextWrapping="Wrap" MaxLength="3" Text="000" VerticalAlignment="Top" Width="120" Height="36" FontSize="24"/>
+        <TextBox x:Name="tb_min" HorizontalAlignment="Left" Margin="26,56,0,0" TextWrapping="Wrap" MaxLength="2" Text="0" VerticalAlignment="Top" Width="120" Height="36" FontSize="24"/>
+        <TextBox x:Name="tb_sec" HorizontalAlignment="Left" Margin="168,56,0,0" TextWrapping="Wrap" MaxLength="2" Text="0" VerticalAlignment="Top" Width="120" Height="36" FontSize="24"/>
+        <TextBlock HorizontalAlignment="Left" Margin="168,26,0,0" TextWrapping="Wrap" Text="Second" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="311,26,0,0" TextWrapping="Wrap" Text="Milliseconds" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
