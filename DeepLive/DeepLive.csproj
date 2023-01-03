@@ -37,7 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CFS.NET">
-      <HintPath>..\..\Files\CFS.NET.dll</HintPath>
+      <HintPath>..\..\..\Project\Files\CFS.NET.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -51,7 +51,7 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="UnitODB">
-      <HintPath>..\..\Files\UnitODB.dll</HintPath>
+      <HintPath>..\..\..\Project\Files\UnitODB.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />

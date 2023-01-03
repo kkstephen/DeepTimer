@@ -8,8 +8,12 @@ namespace DeepCore
     public class DateTimeConver : IValueConverter
     { 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        { 
-            DateTime date = new DateTime((long)value);
+        {
+            long t = (long)value;
+
+            if (t < 0) t = 0;
+
+            DateTime date = new DateTime(t);
 
             return date.ToString("mm:ss.fff");
         }

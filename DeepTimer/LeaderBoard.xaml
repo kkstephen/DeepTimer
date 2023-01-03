@@ -76,7 +76,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="No" Width="40" DisplayMemberBinding="{Binding No}" />
-                    <GridViewColumn Header="Team" Width="100" DisplayMemberBinding="{Binding Team}" />
+                    <GridViewColumn Header="Team" Width="100" DisplayMemberBinding="{Binding Lap.Team}" />
                     <GridViewColumn Header="Result" Width="100" DisplayMemberBinding="{Binding Result}" />
                 </GridView>
             </ListView.View>

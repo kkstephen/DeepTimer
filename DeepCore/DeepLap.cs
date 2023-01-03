@@ -22,16 +22,7 @@ namespace DeepCore
                 record = value;
                 OnPropertyChanged("Record");
             }
-        }
-
-        [Column(NotMapped = true)]
-        public string Result
-        {
-            get
-            { 
-                return Record.ToTimespan();
-            }
-        }
+        } 
 
         public DateTime Date { get; set; }
 

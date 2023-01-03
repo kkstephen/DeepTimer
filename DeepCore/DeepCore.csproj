@@ -33,10 +33,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CFS.NET">
-      <HintPath>..\..\Files\CFS.NET.dll</HintPath>
+      <HintPath>..\..\..\Project\Files\CFS.NET.dll</HintPath>
     </Reference>
     <Reference Include="Excel.4.5">
-      <HintPath>..\..\Files\Excel.4.5.dll</HintPath>
+      <HintPath>..\..\..\Project\Files\Excel.4.5.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpZipLib.1.2.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
@@ -46,45 +46,35 @@
       <HintPath>..\..\Files\net4\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="NPOI, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotNetCore.NPOI.Core.1.2.3\lib\net461\NPOI.dll</HintPath>
+      <HintPath>..\..\..\Project\Files\NPOI.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OOXML, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotNetCore.NPOI.1.2.3\lib\net461\NPOI.OOXML.dll</HintPath>
+      <HintPath>..\..\..\Project\Files\NPOI.OOXML.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OpenXml4Net, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotNetCore.NPOI.OpenXml4Net.1.2.3\lib\net461\NPOI.OpenXml4Net.dll</HintPath>
+      <HintPath>..\..\..\Project\Files\NPOI.OpenXml4Net.dll</HintPath>
     </Reference>
     <Reference Include="NPOI.OpenXmlFormats, Version=1.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotNetCore.NPOI.OpenXmlFormats.1.2.3\lib\net461\NPOI.OpenXmlFormats.dll</HintPath>
+      <HintPath>..\..\..\Project\Files\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Drawing.Common, Version=4.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Drawing.Common.4.5.0\lib\net461\System.Drawing.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Text.Encoding.CodePages, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Encoding.CodePages.4.5.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="UnitODB">
-      <HintPath>..\..\Files\UnitODB.dll</HintPath>
+      <HintPath>..\..\..\Project\Files\UnitODB.dll</HintPath>
     </Reference>
     <Reference Include="UnitODB.Data">
-      <HintPath>..\..\Files\UnitODB.Data.dll</HintPath>
+      <HintPath>..\..\..\Project\Files\UnitODB.Data.dll</HintPath>
     </Reference>
     <Reference Include="UnitODB.Linq">
-      <HintPath>..\..\Files\UnitODB.Linq.dll</HintPath>
+      <HintPath>..\..\..\Project\Files\UnitODB.Linq.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

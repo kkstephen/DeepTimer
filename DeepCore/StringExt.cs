@@ -8,6 +8,8 @@ namespace DeepCore
     {
         public static string ToTimespan(this long t)
         {
+            if (t < 0) t = 0;
+
             DateTime dt = new DateTime(t);
 
             return dt.ToString("mm:ss.fff");

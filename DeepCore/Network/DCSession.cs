@@ -9,21 +9,20 @@ namespace DeepCore
 {
     public class DCSession : CFSession, ICFSession
     {
+        private static readonly string CRLF = "\r\n";
         public string WelcomeMessage { get; set; }
          
         private string message;
         private string clientName;
-
-        private StringBuilder _sb;
+        private string json;
+ 
         private DeepManager dm; 
         
         public DCSession(Socket socket) : base(socket)
         {
             this.ID = StringHelper.GetGUID();
 
-            this.dm = DeepManager.Instance;
-
-            this._sb = new StringBuilder();
+            this.dm = DeepManager.Instance; 
         }
 
         public void Begin()
@@ -34,7 +33,7 @@ namespace DeepCore
             {
                 try
                 {
-                    this.readLine();
+                    this.message = this.Receive();
 
                     switch (this.message)
                     {
@@ -83,35 +82,25 @@ namespace DeepCore
 
         public void welcome()
         {
-            this.sendLine(this.WelcomeMessage);
+            this.sendLine(this.WelcomeMessage); 
 
-            this.readLine();
-
-            this.clientName = this.message;
+            this.clientName = this.Receive();
 
             this.sendLine("OK");
         }
 
         private void ranking()
         { 
-            string json = this.dm.Ranklist.Serialize();
+            this.json = this.dm.Ranklist.Serialize();
 
-            string data = StringHelper.GZip(json);
+            string data = StringHelper.GZip(this.json);
             
             this.sendLine(data);
-        }
-
-        private void readLine()
-        { 
-            this.message = this.Receive();
-        }
+        } 
 
         private void sendLine(string data)
         {
-            this._sb.Clear();
-            this._sb.AppendLine(data);
-            
-            this.Send(this._sb.ToString()); 
+            this.Send(data + CRLF);
         }
     }
 }

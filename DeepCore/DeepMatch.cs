@@ -5,7 +5,6 @@ namespace DeepCore
     public class DeepMatch
     {
         public int No { get; set; }
-        public string Team { get; set; }
         public DeepLap Lap { get; set; }
 
         public string Result

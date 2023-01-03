@@ -289,7 +289,7 @@ namespace DeepTimer
 
                     if (this.updateTeamLaps(e.Lap))
                     {
-                        this.updateRanking();
+                        this.updateRanking(); 
                     }
                 });
 
@@ -313,33 +313,20 @@ namespace DeepTimer
         private void loadData()
         {
             this.lapCache.Clear();
+            this.teamLaps.Clear();
 
             foreach (var p in this.manager.Unit.Cars)
             {
                 this.lapCache.Add(p);
+                 
+                this.updateTeamLaps(p);  
+            } 
 
-                if (!p.Invalid)
-                {                   
-                    this.updateTeamLaps(p);
-                } 
-                else
-                {
-                    if (!this.teamLaps.ContainsKey(p.Team))
-                    {
-                        DeepLap l = new DeepLap() { Team = p.Team, Record = 0, Invalid = true };
-
-                        this.teamLaps.Add(p.Team, l);
-                    }
-                } 
-            }
-
-            this.updateRanking();
+            this.setTeamLaps();
         }
 
         private void setTeamLaps()
         {
-            this.teamLaps.Clear();
-
             foreach (var t in teams)
             {
                 if (!this.teamLaps.ContainsKey(t.Name))
@@ -349,6 +336,8 @@ namespace DeepTimer
                     this.teamLaps.Add(t.Name, p);
                 }
             }
+
+            this.updateRanking();
         } 
 
         private bool updateTeamLaps(DeepLap p)
@@ -357,7 +346,7 @@ namespace DeepTimer
             {
                 var item = this.teamLaps[p.Team];
 
-                if (item.Record == 0 || item.Record > p.Record)
+                if (item.Record <= 0 || item.Record > p.Record)
                 {
                     this.teamLaps[p.Team] = p;
 
@@ -382,7 +371,7 @@ namespace DeepTimer
 
             foreach (var item in this.teamLaps.Values)
             {                
-                DeepMatch c = new DeepMatch() { No = i++, Team = item.Team, Lap = item };
+                DeepMatch c = new DeepMatch() { No = i++, Lap = item };
 
                 this.bestLaps.Add(c);
             }
@@ -390,33 +379,18 @@ namespace DeepTimer
             this.rankView.Items.Refresh();
         }
 
-        private IList<DeepMatch> sortLaps()
-        {
-            IList<DeepMatch> laps = new List<DeepMatch>();
-            
-            IList<DeepLap> best_lap = this.teamLaps.Values.OrderBy(x => x.Record).ToList();
+        private void sortLaps()
+        {  
+            IList<DeepMatch> laps = this.bestLaps.OrderBy(x => x.Lap.Record > 0 ? 0 : 1).ThenBy(x => x.Lap.Record).ToList();
             
             int i = 1;
 
-            foreach (var item in best_lap)
+            foreach (var item in laps)
             {
-                if (item.Record > 0)
-                {
-                    DeepMatch c = new DeepMatch() { No = i++, Team = item.Team, Lap = item };
-                    laps.Add(c);
-                }
+                item.No = i++;                 
             }
 
-            foreach (var item in best_lap)
-            {
-                if (item.Record == 0)
-                {
-                    DeepMatch c = new DeepMatch() { No = i++, Team = item.Team, Lap = item };
-                    laps.Add(c);
-                }
-            }
-
-            return laps;
+            this.manager.Ranklist = laps;
         }
 
         private void reset_timer()
@@ -713,8 +687,6 @@ namespace DeepTimer
                 this.cbTeam.SelectedIndex = 0;
 
                 this.setTeamLaps();
-
-                this.updateRanking(); 
             }
         } 
 
@@ -727,11 +699,10 @@ namespace DeepTimer
             if (dialog.ShowDialog() == true)
             {
                 this.lapCache.Clear();
+                this.teamLaps.Clear();
 
                 this.setTeamLaps();
- 
-                this.updateRanking();
-                
+
                 this.manager.Database = dialog.FileName;
 
                 try
@@ -760,9 +731,7 @@ namespace DeepTimer
             dialog.Filter = "SQLite 3|*.db3|All files (*.*)|*.*";
 
             if (dialog.ShowDialog() == true)
-            {
-                this.setTeamLaps();
-
+            { 
                 this.manager.Database = dialog.FileName;
                 
                 try
@@ -822,7 +791,7 @@ namespace DeepTimer
 
         private void btn_update_Click(object sender, RoutedEventArgs e)
         {
-            this.manager.Ranklist = this.sortLaps();
+            this.sortLaps();
         }
     }
 }
