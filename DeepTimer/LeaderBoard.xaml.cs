@@ -98,6 +98,7 @@ namespace DeepTimer
 
                 this.Dispatcher.InvokeAsync(() => {
                     this.lbDataName.Text = "Databsae: " + this.manager.Database;
+                    this.chk_update.IsChecked = this.manager.AutoRanking;
                 });
             }
             catch (Exception ex)
@@ -376,6 +377,11 @@ namespace DeepTimer
                 this.bestLaps.Add(c);
             }
 
+            if (this.manager.AutoRanking)
+            {
+                this.sortLaps();
+            }
+
             this.rankView.Items.Refresh();
         }
 
@@ -387,10 +393,10 @@ namespace DeepTimer
 
             foreach (var item in laps)
             {
-                item.No = i++;                 
+                item.No = i++;  
             }
-
-            this.manager.Ranklist = laps;
+ 
+            this.manager.Ranklist = laps;             
         }
 
         private void reset_timer()
@@ -655,7 +661,7 @@ namespace DeepTimer
         {
             OpenFileDialog dialog = new OpenFileDialog();
 
-            dialog.Filter = "Excel 2007|*.xlsx|Excel 2003|*.xls|All files (*.*)|*.*";
+            dialog.Filter = "Excel 2013|*.xlsx|Excel 2007|*.xls|All files (*.*)|*.*";
  
             if (dialog.ShowDialog() == true)
             { 
@@ -715,7 +721,7 @@ namespace DeepTimer
                         this.lbDataName.Text = "Databsae: " + dialog.SafeFileName;
                     });
 
-                    MessageBox.Show("Create DB OK.", "EMS", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Create DB OK.", "DeepTimer", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 catch (Exception ex)
                 {
@@ -792,6 +798,11 @@ namespace DeepTimer
         private void btn_update_Click(object sender, RoutedEventArgs e)
         {
             this.sortLaps();
+        }        
+
+        private void chk_update_Click(object sender, RoutedEventArgs e)
+        {
+            this.manager.AutoRanking = this.chk_update.IsChecked ?? false;
         }
     }
 }

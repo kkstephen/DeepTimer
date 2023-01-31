@@ -18,6 +18,7 @@ namespace DeepCore
 
         public IList<DeepMatch> Ranklist { get; set; }
         public string Wallpaper { get; set; }
+        public bool AutoRanking { get; set; }
 
         private UnitOfWork unit;
         public UnitOfWork Unit
@@ -35,6 +36,7 @@ namespace DeepCore
         private DeepManager()
         {
             this.Ranklist = new List<DeepMatch>();
+            this.AutoRanking = true;
         }
 
         public UnitOfWork GetContainer()
