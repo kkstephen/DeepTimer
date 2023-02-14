@@ -68,7 +68,7 @@
 
         <Button x:Name="btn_timer" Content="Lap Timer" HorizontalAlignment="Right" Margin="0,0,381,30" Grid.Row="2" VerticalAlignment="Bottom" Style="{DynamicResource BTN_UI}" Click="btn_timer_Click" Grid.Column="1" Width="170" Height="48"  />
         <TextBlock x:Name="lb_port" HorizontalAlignment="Left" Margin="10,0,0,7" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="70" Height="16"/>
-        <TextBlock x:Name="lb_status" HorizontalAlignment="Center" Margin="0,154,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="212" Height="16"/>
+        <TextBlock x:Name="lb_status" HorizontalAlignment="Left" Margin="94,0,0,7" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="189" Height="16"/>
         <Button x:Name="btn_stopwatch" Content="Stop Watch" HorizontalAlignment="Right" Margin="0,0,196,30" Grid.Row="2" VerticalAlignment="Bottom" Style="{DynamicResource BTN_UI}" Width="170" Click="btn_stopwatch_Click" Grid.Column="1" Height="48" />
         <Button x:Name="btn_tigger" Content="TAP" HorizontalAlignment="Right" Margin="0,0,10,89" Grid.Row="2" VerticalAlignment="Bottom" Width="135" Style="{DynamicResource BTN_UI}" Click="btn_tigger_Click" Grid.Column="1" Height="48"  />
 
@@ -85,7 +85,7 @@
         <ComboBox x:Name="cbTeam" HorizontalAlignment="Left" Margin="10,0,0,100" Grid.Row="2" VerticalAlignment="Bottom" Width="120" FontSize="18" DisplayMemberPath="Name" Height="32" />
 
 
-        <ComboBox x:Name="cb_down" Margin="137,0,0,100" Grid.Row="2" VerticalAlignment="Bottom" FontSize="18" SelectedIndex="2" Height="32" HorizontalAlignment="Left" Width="51">
+        <ComboBox x:Name="cb_down" Margin="153,0,0,100" Grid.Row="2" VerticalAlignment="Bottom" FontSize="18" SelectedIndex="2" Height="32" HorizontalAlignment="Left" Width="51">
             <ComboBoxItem>0</ComboBoxItem>
             <ComboBoxItem>1</ComboBoxItem>
             <ComboBoxItem>2</ComboBoxItem>
@@ -98,15 +98,15 @@
             <ComboBoxItem>60</ComboBoxItem>
         </ComboBox>
         <TextBlock HorizontalAlignment="Left" Margin="10,0,0,134" Grid.Row="2" TextWrapping="Wrap" Text="Team" VerticalAlignment="Bottom" Width="35" Height="16"/>
-        <TextBlock HorizontalAlignment="Left" Margin="136,0,0,134" Grid.Row="2" TextWrapping="Wrap" Text="Duration" VerticalAlignment="Bottom" Width="52" Height="16"/>
+        <TextBlock HorizontalAlignment="Left" Margin="154,0,0,134" Grid.Row="2" TextWrapping="Wrap" Text="Duration" VerticalAlignment="Bottom" Width="52" Height="16"/>
         <Button  Content="Arduino" HorizontalAlignment="Right" Margin="0,0,305,88" Grid.Row="2"  VerticalAlignment="Bottom" Style="{DynamicResource BTN_UI}" Width="135" Click="btn_sensor_Click" Grid.Column="1" Height="48" />
-        <ComboBox x:Name="cbSecs" HorizontalAlignment="Left" Margin="198,0,0,100" Grid.Row="2" FontSize="18" VerticalAlignment="Bottom" Width="82" Height="32" SelectedIndex="0" />
+        <ComboBox x:Name="cbSecs" HorizontalAlignment="Left" Margin="215,0,0,100" Grid.Row="2" FontSize="18" VerticalAlignment="Bottom" Width="82" Height="32" SelectedIndex="0" Grid.ColumnSpan="2" />
         <TextBlock x:Name="lbDataName" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,292,7" Grid.Row="2" TextWrapping="Wrap" Text="DB" VerticalAlignment="Bottom" Width="178" Height="16"/>
         <TextBlock x:Name="lb_log" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="2" TextWrapping="Wrap" Text="Stop" VerticalAlignment="Bottom" Margin="0,0,104,7" Width="183" Height="16"/>
 
-        <Button x:Name="btn_update" Style="{DynamicResource BTN_UI}" Content="Ranking" HorizontalAlignment="Left" Margin="427,0,0,30" Grid.Row="2" VerticalAlignment="Bottom" Width="170" Click="btn_update_Click" Height="48" Grid.Column="1"/>
+        <Button x:Name="btn_update" Style="{DynamicResource BTN_UI}" Content="Ranking" HorizontalAlignment="Right" Margin="0,0,10,30" Grid.Row="2" VerticalAlignment="Bottom" Width="170" Click="btn_update_Click" Height="48" Grid.Column="1"/>
         <Button x:Name="btn_team" Grid.Column="1" Content="Team" HorizontalAlignment="Right" Margin="0,0,156,89" Grid.Row="2" VerticalAlignment="Bottom" Style="{DynamicResource BTN_UI}" Width="134" Click="btn_team_Click"/>
-        <CheckBox x:Name="chk_update" Grid.Column="1" Content="Auto Ranking" HorizontalAlignment="Left" Margin="56,45,0,0" Grid.Row="2" VerticalAlignment="Top" Click="chk_update_Click"/>
+        <CheckBox x:Name="chk_update" Grid.Column="1" Content="Auto Ranking" HorizontalAlignment="Right" Margin="0,0,459,121" Grid.Row="2" VerticalAlignment="Bottom" Click="chk_update_Click"/>
 
     </Grid>
 </Window>

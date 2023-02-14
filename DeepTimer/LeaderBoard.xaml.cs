@@ -194,6 +194,7 @@ namespace DeepTimer
 
                     this.Dispatcher.InvokeAsync(() => {
                         this.lb_port.Text = port;
+                        this.lb_status.Text = "Ready.";
                     });
                 }
                 else
