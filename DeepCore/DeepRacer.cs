@@ -24,6 +24,17 @@ namespace DeepCore
 
         public TimeSpan Last_Tick { get; set; }
 
+        public bool TestMode
+        {
+            get { return this.testMode; }
+        }
+        private bool testMode { get; set; }
+
+        public DeepRacer()
+        {
+            testMode = false;
+        }
+
         public void Ready()
         {
             if (OnLoad != null)
@@ -124,6 +135,11 @@ namespace DeepCore
             {
                 OnClose(this, new EventArgs());
             }
+        }
+
+        public void SetMode(bool isTest)
+        {
+            this.testMode = isTest;
         }
     }
 }

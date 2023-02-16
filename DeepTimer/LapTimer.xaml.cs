@@ -226,7 +226,10 @@ namespace DeepTimer
                    
             DeepLap car = new DeepLap() { Lap = this.Racer.Lap, Team = this.Racer.Team, Record = lap_cur, Date = DateTime.Now, Invalid = false };
 
-            this.Racer.Log(car);  
+            if (!Racer.TestMode)
+            {
+                this.Racer.Log(car);
+            }
                 
             this.Dispatcher.InvokeAsync(() =>
             {

@@ -281,7 +281,7 @@ namespace DeepTimer
         }
 
         private void Racer_OnRecord(object sender, EventRecordArgs e)
-        {
+        { 
             try
             {
                 this.manager.Save(e.Lap);
@@ -804,6 +804,13 @@ namespace DeepTimer
         private void chk_update_Click(object sender, RoutedEventArgs e)
         {
             this.manager.AutoRanking = this.chk_update.IsChecked ?? false;
+        }
+
+        private void chk_Test_Click(object sender, RoutedEventArgs e)
+        {
+            bool ret = this.chk_Test.IsChecked ?? false;
+            
+            this.racer.SetMode(ret); 
         }
     }
 }

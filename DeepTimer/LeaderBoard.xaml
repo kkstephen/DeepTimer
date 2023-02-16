@@ -107,6 +107,7 @@
         <Button x:Name="btn_update" Style="{DynamicResource BTN_UI}" Content="Ranking" HorizontalAlignment="Right" Margin="0,0,10,30" Grid.Row="2" VerticalAlignment="Bottom" Width="170" Click="btn_update_Click" Height="48" Grid.Column="1"/>
         <Button x:Name="btn_team" Grid.Column="1" Content="Team" HorizontalAlignment="Right" Margin="0,0,156,89" Grid.Row="2" VerticalAlignment="Bottom" Style="{DynamicResource BTN_UI}" Width="134" Click="btn_team_Click"/>
         <CheckBox x:Name="chk_update" Grid.Column="1" Content="Auto Ranking" HorizontalAlignment="Right" Margin="0,0,459,121" Grid.Row="2" VerticalAlignment="Bottom" Click="chk_update_Click"/>
+        <CheckBox x:Name="chk_Test" Grid.Column="1" Content="Test Mode" HorizontalAlignment="Right" Margin="0,0,458,97" Grid.Row="2" VerticalAlignment="Bottom" Width="92" Click="chk_Test_Click"/>
 
     </Grid>
 </Window>
