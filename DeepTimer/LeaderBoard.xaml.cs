@@ -182,8 +182,8 @@ namespace DeepTimer
                 this.sensor = new SerialPort(port, rates);
 
                 this.sensor.Handshake = Handshake.None;
-                this.sensor.ReadTimeout = 1000;
-                this.sensor.WriteTimeout = 1000;
+                this.sensor.ReadTimeout = 500;
+                this.sensor.WriteTimeout = 500;
                 this.sensor.ReadBufferSize = 1024;
 
                 this.sensor.DataReceived += port_received;
