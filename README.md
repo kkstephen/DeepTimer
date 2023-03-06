@@ -7,7 +7,7 @@ This is an automatic timer specially designed for AWS DeepRacer, which needs to 
 ## 使用方法
 
 ### 輸入隊伍資料
-    建立一個 Excel 文件, 含 2 個列: Team 和 Name。 其中 Team 為編號, Name 為隊名。
+    - 建立一個 Excel 文件, 含 2 個列: Team 和 Name。 其中 Team 為編號, Name 為隊名。
     Create an Excel file with 2 columns: Team and Name. Where "Team" is the number and "Name" is the team name.
 
 ### 連接 Arduino 裝置
