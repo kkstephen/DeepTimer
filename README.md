@@ -36,9 +36,9 @@ This is an automatic timer specially designed for AWS DeepRacer, which needs to 
 
 ### 顯示時間排名
 - #### 運行排名服務器
-    輸入主機 IP 地址。
+    輸入主機 IP 地址。  
     Enter the host IP address.
     
 - #### DeepLive
-    在另一台電腦上運行 DeepLive，連接服務器。
+    在另一台電腦上運行 DeepLive，連接服務器。  
     Run DeepLive on another computer and connect to the server.
