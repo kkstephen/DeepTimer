@@ -36,6 +36,8 @@ This is an automatic timer specially designed for AWS DeepRacer, which needs to 
     Export the times data to an Excel file.
 
 ### 顯示時間排名
+![This is a phto](DeepTimer/Assets/Screenshot%2023-03-06%145332.png)  
+
 - #### 運行排名服務器
     輸入本機 IP 地址。  
     Enter the deeptimer host IP address.
