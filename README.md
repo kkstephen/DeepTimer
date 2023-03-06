@@ -2,12 +2,12 @@
 Automatic Racing Timer
 
 ## 特色
-這是一個專為 **AWS DeepRacer** 設計的自動計時器， 需要連接專門 **Arduino FSR** 壓力感應器使用。
+? 這是一個專為 **AWS DeepRacer** 設計的自動計時器， 需要連接專門 **Arduino FSR** 壓力感應器使用。
 
 ## 使用方法
 
 ### 輸入隊伍資料
-建立一個 Excel 文件, 含 2 個列: Team 和 Name。 其中 Team 為編號, Name 為隊名。
+> 建立一個 Excel 文件, 含 2 個列: Team 和 Name。 其中 Team 為編號, Name 為隊名。
 
 ### 連接 Arduino 裝置
 請打開相關 COM Port， 注意需要安裝 **Arduinoo USB driver**。成功連接后可以用 Monitor 去觀察是否有資料回傳。
