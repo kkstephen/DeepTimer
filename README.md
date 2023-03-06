@@ -23,7 +23,7 @@ This is an automatic timer specially designed for AWS DeepRacer, which needs to 
     Select a team and press start. The timer counts down immediately. When the car passes the starting line first time, the lap timing starts, and when it passes the starting line again, it is called to complete a lap.
 
 - #### 重置計時  
-    倒數結束或暫停后才能重置時間。
+    倒數結束或暫停后才能重置時間。  
     The time cannot be reset until the countdown ends or is paused.
     
 ### 測試模式
