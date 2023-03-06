@@ -35,6 +35,6 @@ This is an automatic timer specially designed for AWS DeepRacer, which needs to 
     Export the times data to an Excel file.
 
 ### 時間排名
-    - 運行排名服務器，輪入IP地址。
+- #### 運行排名服務器，輪入IP地址。
     
-    - 打開 DeepLive 連接服務器。
+- #### 打開 DeepLive 連接服務器。
