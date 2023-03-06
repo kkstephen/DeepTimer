@@ -1,9 +1,6 @@
 # DeepTimer
-Automatic Racing Timer
-
-## 特色
 這是一個專為 **AWS DeepRacer** 設計的自動計時器， 需要連接專門 **Arduino FSR** 壓力感應器使用。
-
+ 
 ## 使用方法
 
 ### 輸入隊伍資料
