@@ -24,6 +24,7 @@ This is an automatic timer specially designed for AWS DeepRacer, which needs to 
 
 - #### 重置計時  
     倒數結束或暫停后才能重置時間。
+    The time cannot be reset until the countdown ends or is paused.
     
 ### 測試模式
     勾選 Test mode 后不會記錄時間到資料庫，只作顯示時間之用。
