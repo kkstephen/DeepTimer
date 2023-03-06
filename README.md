@@ -34,7 +34,7 @@ This is an automatic timer specially designed for AWS DeepRacer, which needs to 
     把比賽隊伍時間儲存到 Excel 文件中.
     Export the times data to an Excel file.
 
-### 時間排名
+### 顯示時間排名
 - #### 運行排名服務器
     輸入主機 IP 地址。
     Enter the host IP address.
