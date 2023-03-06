@@ -7,7 +7,7 @@
     建立一個 Excel 文件, 含 2 個列: Team 和 Name。 其中 Team 為編號, Name 為隊名。
 
 ### 連接 Arduino 裝置
-    請打開相關 COM Port， 注意需要安裝 Arduinoo USB driver。成功連接后可以用 Monitor 去觀察是否有資料回傳。
+    請打開相關 COM Port， 注意需要安裝 Arduino USB driver。成功連接后可以用 Monitor 去觀察是否有資料回傳。
 
 ### 開啟計時器畫面
     完成以上 2 個步驟才能打開 lap timer 畫面，背景可自由更換。
