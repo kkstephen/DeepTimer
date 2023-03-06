@@ -18,11 +18,11 @@ This is an automatic timer specially designed for AWS DeepRacer, which needs to 
     完成以上 2 個步驟才能打開 lap timer 畫面，背景可自由更換。
     After completing the above 2 steps, the lap timer screen can be opened, and the background can be changed freely.
  
-- #### 開始計時  
+- #### 開始計時 Start
     選擇一支隊伍，然后按開始。計時器會立即進行倒數。 當車子第一次經過起跑線才開始正式計時，當再次經過起跑線時叫作完成一圈。
     Select a team and press start. The timer counts down immediately. When the car passes the starting line first time, the lap timing starts, and when it passes the starting line again, it is called to complete a lap.
 
-- #### 重置計時  
+- #### 重置計時 Reset
     倒數結束或暫停后才能重置時間。  
     The timer cannot be reset until the countdown ends or is paused.
     
@@ -35,6 +35,10 @@ This is an automatic timer specially designed for AWS DeepRacer, which needs to 
     Export the times data to an Excel file.
 
 ### 時間排名
-- #### 運行排名服務器，輪入IP地址。
+- #### 運行排名服務器
+    輸入主機 IP 地址。
+    Enter the host IP address.
     
-- #### 打開 DeepLive 連接服務器。
+- #### DeepLive
+    在另一台電腦上運行 DeepLive，連接服務器。
+    Run DeepLive on another computer and connect to the server.
