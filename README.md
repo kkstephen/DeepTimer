@@ -3,6 +3,8 @@
 這是一個專為 AWS DeepRacer 設計的自動計時器， 需要連接專門 Arduino FSR 壓力感應器使用。
 
 This is an automatic timer specially designed for AWS DeepRacer, which needs to be connected to a dedicated Arduino FSR sensor.
+
+![This is a phto](DeepTimer/Assets/Screenshot%202023-03-06%20155531.png)
  
 ## 使用方法
 
@@ -18,6 +20,8 @@ This is an automatic timer specially designed for AWS DeepRacer, which needs to 
     完成以上 2 個步驟才能打開 lap timer 畫面，背景可自由更換。
     After completing the above 2 steps, the lap timer screen can be opened, and the background can be changed freely.
  
+![This is a phto](DeepTimer/Assets/Screenshot%202023-03-06%20145313.png)
+
 - #### 開始計時 Start
     選擇一支隊伍，然后按開始。計時器會立即進行倒數。 當車子第一次經過起跑線才開始正式計時，當再次經過起跑線時叫作完成一圈。
     Select a team and press start. The timer counts down immediately. When the car passes the starting line first time, the lap timing starts, and when it passes the starting line again, it is called to complete a lap.
@@ -35,6 +39,8 @@ This is an automatic timer specially designed for AWS DeepRacer, which needs to 
     Export the times data to an Excel file.
 
 ### 顯示時間排名
+![This is a phto](DeepTimer/Assets/Screenshot%202023-03-06%20145332.png)
+
 - #### 運行排名服務器
     輸入本機 IP 地址。  
     Enter the deeptimer host IP address.
