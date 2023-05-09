@@ -6,6 +6,7 @@ using UnitODB.Data.SQLite;
 using Excel;
 using System.IO;
 using System.Data;
+using Newtonsoft.Json;
 
 namespace DeepCore
 {
@@ -87,6 +88,30 @@ namespace DeepCore
  
                 ct.Commit();
             }
-        } 
+        }
+
+        public void Save(object obj, string file)
+        {
+            FileInfo fi = new FileInfo(file);
+
+            string json = JsonConvert.SerializeObject(obj, Newtonsoft.Json.Formatting.Indented);
+
+            using (StreamWriter writer = fi.CreateText())
+            {
+                writer.Write(json);                
+            }
+        }
+
+        public T Load<T>(string file) where T : class
+        {
+            FileInfo fi = new FileInfo(file);
+
+            using (StreamReader reader = fi.OpenText())
+            {
+                var json = reader.ReadToEnd();
+ 
+                return json.Deserialize<T>();                
+            }
+        }
     }
 }

@@ -316,13 +316,26 @@ namespace DeepTimer
         {
             this.lapCache.Clear();
             this.teamLaps.Clear();
+            this.teams.Clear();
 
             foreach (var p in this.manager.Unit.Cars)
             {
                 this.lapCache.Add(p);
                  
                 this.updateTeamLaps(p);  
-            } 
+            }
+
+            foreach(var t in this.teamLaps.Keys)
+            {
+                Team team = new Team();
+                team.Name = t;
+
+                this.teams.Add(team);
+            }
+
+            this.cbTeam.Items.Refresh();
+
+            this.cbTeam.SelectedIndex = 0;
 
             this.setTeamLaps();
         }
@@ -357,7 +370,7 @@ namespace DeepTimer
             } 
             else
             {
-                this.teamLaps.Add(p.Team, p);
+                this.teamLaps.Add(p.Team, p); 
 
                 return true;
             }
@@ -582,7 +595,7 @@ namespace DeepTimer
                     this.lb_status.Text = "Set background: " + dialog.SafeFileName;
                 });
             }
-        } 
+        }
 
         private void btn_monitor_Click(object sender, RoutedEventArgs e)
         {
@@ -811,6 +824,31 @@ namespace DeepTimer
             bool ret = this.chk_Test.IsChecked ?? false;
             
             this.racer.SetMode(ret); 
+        }
+        private void btn_Addteam_Click(object sender, RoutedEventArgs e)
+        {
+            TeamWin dialog = new TeamWin();
+
+            dialog.Owner = this;
+
+            dialog.ShowDialog();
+
+            if (dialog.DialogResult.HasValue && dialog.DialogResult.Value)
+            {
+                if (!string.IsNullOrEmpty(dialog.TeamName))
+                {
+                    Team t = new Team();
+                    t.Name = dialog.TeamName;
+
+                    this.teams.Add(t);
+
+                    this.cbTeam.Items.Refresh();
+
+                    this.setTeamLaps();
+                }
+            }
+
+            dialog.Close();
         }
     }
 }

@@ -26,7 +26,7 @@
                 <MenuItem Header="_File">
                     <MenuItem Header="_Sensor" Click="btn_sensor_Click" />
                     <MenuItem Header="_Monitor" Click="btn_monitor_Click" />
-                    <MenuItem Header="_Team" Click="btn_team_Click" />
+                    <MenuItem Header="_Add Team" Click="btn_Addteam_Click" />
                     <MenuItem Header="_Background" Click="btn_bg_Click" />
                     <MenuItem Header="_Export" Click="btn_export_Click" />
 
