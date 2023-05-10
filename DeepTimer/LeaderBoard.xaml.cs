@@ -316,29 +316,17 @@ namespace DeepTimer
         {
             this.lapCache.Clear();
             this.teamLaps.Clear();
-            this.teams.Clear();
-
+             
             foreach (var p in this.manager.Unit.Cars)
             {
                 this.lapCache.Add(p);
                  
                 this.updateTeamLaps(p);  
-            }
-
-            foreach(var t in this.teamLaps.Keys)
-            {
-                Team team = new Team();
-                team.Name = t;
-
-                this.teams.Add(team);
-            }
-
-            this.cbTeam.Items.Refresh();
-
-            this.cbTeam.SelectedIndex = 0;
+            } 
 
             this.setTeamLaps();
         }
+ 
 
         private void setTeamLaps()
         {
@@ -671,45 +659,7 @@ namespace DeepTimer
             } 
         }
 
-        private void btn_team_Click(object sender, RoutedEventArgs e)
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-
-            dialog.Filter = "Excel 2013|*.xlsx|Excel 2007|*.xls|All files (*.*)|*.*";
- 
-            if (dialog.ShowDialog() == true)
-            { 
-                this.teams.Clear();
-
-                try
-                {
-                    var table = ExcelNPOI.ImportXls(dialog.FileName);
-                    
-                    int n = 1;
-                    
-                    foreach (DataRow dr in table.Rows)
-                    {
-                        Team t = new Team();
-
-                        t.Name = dr["Name"].ToString();
-                        t.Id = n++;
-                    
-                        this.teams.Add(t); 
-                    }
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "DeepTimer", MessageBoxButton.OK, MessageBoxImage.Error);
-                } 
-                
-                this.cbTeam.Items.Refresh();
-
-                this.cbTeam.SelectedIndex = 0;
-
-                this.setTeamLaps();
-            }
-        } 
-
+        
         private void new_database_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog dialog = new SaveFileDialog();
@@ -838,8 +788,10 @@ namespace DeepTimer
                 if (!string.IsNullOrEmpty(dialog.TeamName))
                 {
                     Team t = new Team();
+                    
                     t.Name = dialog.TeamName;
-
+                    t.Id = this.teams.Count + 1;
+                   
                     this.teams.Add(t);
 
                     this.cbTeam.Items.Refresh();
@@ -849,6 +801,74 @@ namespace DeepTimer
             }
 
             dialog.Close();
+        }
+
+        private void btn_team_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+
+            dialog.Filter = "Excel 2013|*.xlsx|Excel 2007|*.xls|All files (*.*)|*.*";
+
+            if (dialog.ShowDialog() == true)
+            {
+                this.teams.Clear();
+
+                try
+                {
+                    var table = ExcelNPOI.ImportXls(dialog.FileName);
+
+                    int n = 1;
+
+                    foreach (DataRow dr in table.Rows)
+                    {
+                        Team t = new Team();
+
+                        t.Name = dr["Name"].ToString();
+                        t.Id = n++;
+
+                        this.teams.Add(t);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "DeepTimer", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+                this.cbTeam.Items.Refresh();
+
+                this.cbTeam.SelectedIndex = 0;
+
+                this.setTeamLaps();
+            }
+        }
+
+
+        private void btn_copyteam_Click(object sender, RoutedEventArgs e)
+        {
+            int n = 1;
+
+            foreach (var t in this.teamLaps.Keys)
+            {
+                Team team = new Team();
+            
+                team.Name = t;
+                team.Id = n;
+
+                this.teams.Add(team);
+
+                n++;
+            }
+
+            this.cbTeam.Items.Refresh();
+            this.cbTeam.SelectedIndex = 0;
+        }
+
+        private void btn_clearteam_Click(object sender, RoutedEventArgs e)
+        {
+            this.teams.Clear();
+
+            this.cbTeam.Items.Refresh();
+            this.cbTeam.SelectedIndex = 0;
         }
     }
 }
