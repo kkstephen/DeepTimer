@@ -14,6 +14,7 @@ using DeepCore;
 using System.Windows.Controls;
 using System.Data;
 using System.Threading;
+using System.Diagnostics;
 
 namespace DeepTimer
 {
@@ -28,12 +29,13 @@ namespace DeepTimer
         private IList<DeepMatch> bestLaps;
 
         private SerialPort sensor;
-        private Thread _service;
-
+        private Thread _service;        
+        
         private DeepServer server;      
         private DeepManager manager;
-        private DeepRacer racer; 
+        private DeepRacer racer;
 
+        
         private volatile bool is_stop = true;
 
         public LeaderBoard()
@@ -74,7 +76,7 @@ namespace DeepTimer
             }
 
             this.cbSecs.ItemsSource = secs; 
-        }
+        } 
 
         private void Cache_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
@@ -234,7 +236,7 @@ namespace DeepTimer
         }
 
         private void port_received(object sender, SerialDataReceivedEventArgs e)
-        {  
+        { 
             try
             {
                 string data = this.sensor.ReadLine();
@@ -303,7 +305,7 @@ namespace DeepTimer
                 });
             }
         }
-
+ 
         private void setLog(string message)
         {
             this.Dispatcher.InvokeAsync(() =>
@@ -482,6 +484,18 @@ namespace DeepTimer
             this.racer.Start();
 
             this.is_stop = false;
+ 
+            //Thread timer_loop = new Thread(() =>
+            //{ 
+            //    while (!this.is_stop)
+            //    {
+            //        this.racer.Tap();
+
+            //        Thread.Sleep(1);
+            //    }
+            //});
+
+            //this.timer_loop.Start();
 
             this.Dispatcher.InvokeAsync(() => {
                 this.lb_status.Text = "Ready to go.";
@@ -495,7 +509,7 @@ namespace DeepTimer
             if (this.racer.IsRunning)
             {
                 this.racer.Stop();
-            }
+            } 
 
             this.Dispatcher.InvokeAsync(() => {
                 this.lb_status.Text = "Stop on " + DateTime.Now.ToString();
@@ -658,7 +672,6 @@ namespace DeepTimer
                 }
             } 
         }
-
         
         private void new_database_Click(object sender, RoutedEventArgs e)
         {
@@ -775,6 +788,7 @@ namespace DeepTimer
             
             this.racer.SetMode(ret); 
         }
+
         private void btn_Addteam_Click(object sender, RoutedEventArgs e)
         {
             TeamWin dialog = new TeamWin();
@@ -841,7 +855,6 @@ namespace DeepTimer
                 this.setTeamLaps();
             }
         }
-
 
         private void btn_copyteam_Click(object sender, RoutedEventArgs e)
         {

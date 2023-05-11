@@ -22,7 +22,7 @@
         <Grid.Background>
             <ImageBrush ImageSource="/Assets/AWS_LEADER.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
-        <ListView x:Name="rankView" Style="{DynamicResource GridStyle}" d:ItemsSource="{d:SampleData ItemCount=8}" Background="Transparent" BorderThickness="0" VerticalAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Hidden" Margin="0,25,0,0" HorizontalAlignment="Center" Grid.Row="1" Width="885" Padding="10" Height="774">
+        <ListView x:Name="rankView" Style="{DynamicResource GridStyle}" d:ItemsSource="{d:SampleData ItemCount=10}" Background="Transparent" BorderThickness="0" VerticalAlignment="Top" ScrollViewer.VerticalScrollBarVisibility="Hidden" Margin="0,25,0,0" HorizontalAlignment="Center" Grid.Row="1" Width="840" Padding="10" Height="800">
             <ListView.Resources>
                 <Style TargetType="{x:Type ListViewItem}">
                     <Setter Property="Opacity" Value="1" />
@@ -42,12 +42,12 @@
             </ListView.Resources>
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <Border Margin="5" BorderThickness="0" CornerRadius="15">
+                    <Border Margin="5" BorderThickness="0" CornerRadius="10">
                         <Border.Background>
                             <ImageBrush ImageSource="{Binding Flag, Converter={StaticResource RowBackground}}" Stretch="UniformToFill" />
                         </Border.Background>
-                        <StackPanel Orientation="Horizontal" Margin="20,15,20,15">
-                            <TextBlock Text="{Binding No}" Grid.Row="0" Grid.Column="0" Height="50" FontSize="38" FontWeight="Bold" Width="160" Foreground="#ffffff">
+                        <StackPanel Orientation="Horizontal" Margin="15">
+                            <TextBlock Text="{Binding No}" Grid.Row="0" Grid.Column="0" FontSize="28" FontWeight="Bold" Width="100" VerticalAlignment="Center" Foreground="#ffffff">
                                 <TextBlock.Effect>
                                     <DropShadowEffect
                                       ShadowDepth="2"
@@ -57,7 +57,7 @@
                                       BlurRadius="0.0" />
                                 </TextBlock.Effect>
                             </TextBlock>
-                            <TextBlock Text="{Binding Lap.Team}" Grid.Row="0" Grid.Column="1" Height="40"  FontSize="32" TextAlignment="Left" FontWeight="Regular" Width="400" Foreground="#f1f1f1">
+                            <TextBlock Text="{Binding Lap.Team}" Grid.Row="0" Grid.Column="1" FontSize="20" TextAlignment="Left" VerticalAlignment="Center" FontWeight="Regular" Width="400" Foreground="#f1f1f1">
                                 <TextBlock.Effect>
                                     <DropShadowEffect
                                       ShadowDepth="2"
@@ -67,7 +67,7 @@
                                       BlurRadius="0.0" />
                                 </TextBlock.Effect>
                             </TextBlock>
-                            <TextBlock Text="{Binding Result}" Grid.Row="0" Grid.Column="2" TextAlignment="Right" FontSize="38" Width="240" FontWeight="Bold" FontStyle="Italic" Foreground="#ffffff"/>
+                            <TextBlock Text="{Binding Result}" Grid.Row="0" Grid.Column="2" TextAlignment="Right" VerticalAlignment="Center" FontSize="24" Width="260" FontWeight="Bold" FontStyle="Italic" Foreground="#ffffff"/>
                         </StackPanel>
                     </Border>
                 </DataTemplate>

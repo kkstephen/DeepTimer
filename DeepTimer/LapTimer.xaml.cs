@@ -23,15 +23,14 @@ namespace DeepTimer
         private WindowState oldstate;
         public DeepRacer Racer { get; set; }
 
-        private Thread runable;
+        private Thread watchdog;
         private Stopwatch sw;
 
         private TimeSpan progress;
         private TimeSpan remain_time;
         private TimeSpan elapse_time;
 
-        //private DispatcherTimer timer;
-        private System.Timers.Timer timer;
+        private DispatcherTimer timer;
 
         private long last_elapse;
 
@@ -46,18 +45,18 @@ namespace DeepTimer
             this.remain_time = TimeSpan.FromSeconds(3 * 60);
 
             this.sw = new Stopwatch();
+            this.sw.Reset();
 
-            this.timer = new System.Timers.Timer();
+            this.timer = new DispatcherTimer();
 
-            this.timer.Interval = 100; 
-            this.timer.AutoReset = true;
-
-            this.timer.Elapsed += Timer_Elapsed;
+            this.timer.Interval = TimeSpan.FromMilliseconds(100);
+            this.timer.Tick += Timer_Tick;
         }
 
-        private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
-            this.Dispatcher.InvokeAsync(this.updateTimer);
+            //count down 
+            this.Dispatcher.InvokeAsync(updateTimer);
         }
 
         private void updateTimer()
@@ -125,7 +124,7 @@ namespace DeepTimer
             }
         } 
 
-        private void timer_loop()
+        private void countdown_loop()
         {
             while (!this.is_end)
             { 
@@ -167,9 +166,9 @@ namespace DeepTimer
 
             this.is_end = false;
                        
-            this.runable = new Thread(new ThreadStart(timer_loop));
+            this.watchdog = new Thread(new ThreadStart(countdown_loop));
 
-            this.runable.Start();  
+            this.watchdog.Start();  
 
             this.sw.Start();
             this.timer.Start();
@@ -179,12 +178,12 @@ namespace DeepTimer
         {
             this.is_end = true; 
 
-            if (this.runable.IsAlive)
+            if (this.watchdog.IsAlive)
             {
-                this.runable.Join();
+                this.watchdog.Join();
             }
  
-            this.runable = null;
+            this.watchdog = null;
         }
 
         private void Racer_OnTouch(object sender, EventArgs e)
@@ -201,16 +200,16 @@ namespace DeepTimer
 
                 //start time ticks
                 this.last_elapse = ticks_now;
-                                
+
                 this.Racer.Last_Tick = TimeSpan.FromTicks(ticks_now);
 
                 return;
             }
 
-            //last time span                       
-            long lap_cur = ticks_now - last_elapse;
+            //last time span 
+            long lap_cur = ticks_now - last_elapse; 
 
-            if (lap_cur / Stopwatch.Frequency < 2f)
+            if (lap_cur < 20000000)
                 return;
 
             this.Racer.Last_Tick = TimeSpan.FromTicks(ticks_now); 
@@ -225,19 +224,19 @@ namespace DeepTimer
             this.Racer.Lap++; 
                    
             DeepLap car = new DeepLap() { Lap = this.Racer.Lap, Team = this.Racer.Team, Record = lap_cur, Date = DateTime.Now, Invalid = false };
-
-            if (!Racer.TestMode)
-            {
-                this.Racer.Log(car);
-            }
-                
+             
             this.Dispatcher.InvokeAsync(() =>
             {
+                if (!Racer.TestMode)
+                {
+                    this.Racer.Log(car);
+                }
+                
                 this.lb_last.Text = lap_cur.ToTimespan();
                 this.lb_best.Text = this.Racer.BestLap.ToTimespan();
 
                 this.lb_lapnum.Text = this.Racer.Lap.ToString();
-            });             
+            });  
         } 
 
         private void Racer_OnDraw(object sender, EventActivityArgs e)

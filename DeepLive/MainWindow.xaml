@@ -10,7 +10,7 @@
         <Button x:Name="btn_connect" Content="Connect" HorizontalAlignment="Left" Margin="10,0,0,40" VerticalAlignment="Bottom" Height="36" Width="80" Click="btn_connect_Click"/>
         <Button x:Name="btn_close" Content="Close" HorizontalAlignment="Left" Margin="110,0,0,40" VerticalAlignment="Bottom" Height="36" Width="78" Click="btn_close_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,20,0,0" TextWrapping="Wrap" Text="Host" VerticalAlignment="Top"/>
-        <TextBox x:Name="tb_host" HorizontalAlignment="Left" Margin="10,41,0,0" TextWrapping="Wrap" Text="192.168.0.4" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tb_host" HorizontalAlignment="Left" Margin="10,41,0,0" TextWrapping="Wrap" Text="192.168.0.188" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="166,20,0,0" TextWrapping="Wrap" Text="Port" VerticalAlignment="Top"/>
         <TextBox x:Name="tb_port" HorizontalAlignment="Left" Margin="166,41,0,0" TextWrapping="Wrap" Text="3300" VerticalAlignment="Top" Width="120"/>
         <TextBlock x:Name="lb_status" HorizontalAlignment="Left" Margin="10,0,0,10" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="307"/>
