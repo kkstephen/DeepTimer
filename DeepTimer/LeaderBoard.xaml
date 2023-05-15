@@ -67,11 +67,11 @@
         <Button x:Name="btn_stop" Content="Stop" HorizontalAlignment="Left" Margin="118,0,0,30" VerticalAlignment="Bottom" Style="{DynamicResource BTN_UI}" Click="btn_stop_Click" IsEnabled="False" Grid.Row="2" Height="48" Width="96"  />
         <Button x:Name="btn_reset" Content="Reset" HorizontalAlignment="Left" Margin="224,0,0,30" VerticalAlignment="Bottom" Style="{DynamicResource BTN_UI}" Click="btn_reset_Click" IsEnabled="False" Grid.Row="2"  Grid.ColumnSpan="2" Height="48" Width="96" />
 
-        <Button x:Name="btn_timer" Content="Lap Timer" HorizontalAlignment="Right" Margin="0,0,381,30" Grid.Row="2" VerticalAlignment="Bottom" Style="{DynamicResource BTN_UI}" Click="btn_timer_Click" Grid.Column="1" Width="170" Height="48"  />
+        <Button x:Name="btn_timer" Content="Lap Timer" HorizontalAlignment="Right" Margin="0,0,317,30" Grid.Row="2" VerticalAlignment="Bottom" Style="{DynamicResource BTN_UI}" Click="btn_timer_Click" Grid.Column="1" Width="144" Height="48"  />
         <TextBlock x:Name="lb_port" HorizontalAlignment="Left" Margin="10,0,0,7" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="70" Height="16"/>
         <TextBlock x:Name="lb_status" HorizontalAlignment="Left" Margin="94,0,0,7" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="189" Height="16"/>
-        <Button x:Name="btn_stopwatch" Content="Stop Watch" HorizontalAlignment="Right" Margin="0,0,196,30" Grid.Row="2" VerticalAlignment="Bottom" Style="{DynamicResource BTN_UI}" Width="170" Click="btn_stopwatch_Click" Grid.Column="1" Height="48" />
-        <Button x:Name="btn_tigger" Content="TAP" HorizontalAlignment="Right" Margin="0,0,156,90" Grid.Row="2" VerticalAlignment="Bottom" Width="135" Style="{DynamicResource BTN_UI}" Click="btn_tigger_Click" Grid.Column="1" Height="48"  />
+        <Button x:Name="btn_stopwatch" Content="Stop Watch" HorizontalAlignment="Right" Margin="0,0,159,30" Grid.Row="2" VerticalAlignment="Bottom" Style="{DynamicResource BTN_UI}" Width="146" Click="btn_stopwatch_Click" Grid.Column="1" Height="48" />
+        <Button x:Name="btn_tigger" Content="TAP" HorizontalAlignment="Right" Margin="0,0,10,30" Grid.Row="2" VerticalAlignment="Bottom" Width="135" Style="{DynamicResource BTN_UI}" Click="btn_tigger_Click" Grid.Column="1" Height="48"  />
 
         <ListView x:Name="rankView" d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="0" Margin="5,3,2,0" Grid.Row="1">
             <ListView.View>
@@ -105,10 +105,10 @@
         <TextBlock x:Name="lbDataName" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,292,7" Grid.Row="2" TextWrapping="Wrap" Text="DB" VerticalAlignment="Bottom" Width="178" Height="16"/>
         <TextBlock x:Name="lb_log" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="2" TextWrapping="Wrap" Text="Stop" VerticalAlignment="Bottom" Margin="0,0,104,7" Width="183" Height="16"/>
 
-        <Button x:Name="btn_update" Style="{DynamicResource BTN_UI}" Content="Ranking" HorizontalAlignment="Right" Margin="0,0,10,30" Grid.Row="2" VerticalAlignment="Bottom" Width="170" Click="btn_update_Click" Height="48" Grid.Column="1"/>
-        <Button x:Name="btn_team" Grid.Column="1" Content="Team" HorizontalAlignment="Right" Margin="0,0,304,90" Grid.Row="2" VerticalAlignment="Bottom" Style="{DynamicResource BTN_UI}" Width="134" Click="btn_Addteam_Click"/>
-        <CheckBox x:Name="chk_update" Grid.Column="1" Content="Auto Ranking" HorizontalAlignment="Right" Margin="0,0,459,121" Grid.Row="2" VerticalAlignment="Bottom" Click="chk_update_Click"/>
-        <CheckBox x:Name="chk_Test" Grid.Column="1" Content="Test Mode" HorizontalAlignment="Right" Margin="0,0,458,97" Grid.Row="2" VerticalAlignment="Bottom" Width="92" Click="chk_Test_Click"/>
+        <Button x:Name="btn_update" Style="{DynamicResource BTN_UI}" Content="Ranking" HorizontalAlignment="Right" Margin="0,0,159,90" Grid.Row="2" VerticalAlignment="Bottom" Width="146" Click="btn_update_Click" Height="48" Grid.Column="1"/>
+        <Button x:Name="btn_team" Grid.Column="1" Content="Add Team" HorizontalAlignment="Right" Margin="0,0,317,90" Grid.Row="2" VerticalAlignment="Bottom" Style="{DynamicResource BTN_UI}" Width="144" Click="btn_Addteam_Click"/>
+        <CheckBox x:Name="chk_update" Grid.Column="1" Content="Auto Ranking" HorizontalAlignment="Right" Margin="0,0,481,123" Grid.Row="2" VerticalAlignment="Bottom" Click="chk_update_Click"/>
+        <CheckBox x:Name="chk_Test" Grid.Column="1" Content="Test Mode" HorizontalAlignment="Right" Margin="0,0,481,99" Grid.Row="2" VerticalAlignment="Bottom" Width="92" Click="chk_Test_Click"/>
 
     </Grid>
 </Window>

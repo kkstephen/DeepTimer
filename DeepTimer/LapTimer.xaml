@@ -14,7 +14,7 @@
     </Window.Resources>
     <Grid Style="{DynamicResource GridStyle}" x:Name="board">
         <Grid.Background>
-            <ImageBrush ImageSource="/Assets/AWS_DeepRacer.jpg" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="/Assets/DeepRacer.png" Stretch="UniformToFill"/>
         </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="58*"/>
@@ -24,14 +24,14 @@
         </Grid.RowDefinitions>
         <TextBlock x:Name="lb_time" HorizontalAlignment="Center" Grid.Row="1" TextAlignment="Center" TextWrapping="Wrap" Text="03:00" VerticalAlignment="Top" FontSize="144" Height="153" Width="490" Margin="0,52,0,0"/>
         <TextBlock HorizontalAlignment="Center" Grid.Row="2" TextWrapping="Wrap" Text="Current Lap" VerticalAlignment="Top" TextAlignment="Center" FontSize="32" Height="47" Width="306" Margin="0,20,0,0"/>
-        <TextBlock x:Name="lb_current" HorizontalAlignment="Center" Grid.Row="2" TextWrapping="Wrap" TextAlignment="Center" Text="00:00.0" VerticalAlignment="Top" FontSize="216" Width="892" Height="224" Margin="0,54,0,0"/>
-        <TextBlock x:Name="lb_last" Grid.Row="3" TextWrapping="Wrap" Text="00:00.000" TextAlignment="Right"  FontSize="128" Height="138" HorizontalAlignment="Right" Width="594" VerticalAlignment="Bottom" Margin="0,0,30,77"/>
-        <TextBlock x:Name="lb_best" Grid.Row="3" TextWrapping="Wrap" Text="00:00.000" TextAlignment="left" VerticalAlignment="Bottom" FontSize="128" Height="137" HorizontalAlignment="Left" Width="632" Margin="30,0,0,78"/>
-        <TextBlock x:Name="lb_lapnum" HorizontalAlignment="Right" Margin="0,0,30,205" Grid.Row="2" TextWrapping="Wrap" Text="0" VerticalAlignment="Bottom" TextAlignment="Right" FontSize="96" Width="176" Height="112" Grid.RowSpan="2"/>
-        <TextBlock x:Name="lb_team" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Team" TextAlignment="Left" VerticalAlignment="Bottom" FontSize="48" Width="358" Height="58" Grid.Row="3" Margin="30,0,0,230"/>
+        <TextBlock x:Name="lb_current" HorizontalAlignment="Center" Grid.Row="2" TextWrapping="Wrap" TextAlignment="Center" Text="00:00.00" VerticalAlignment="Top" FontSize="216" Width="892" Height="224" Margin="0,54,0,0"/>
+        <TextBlock x:Name="lb_last" Grid.Row="3" TextWrapping="Wrap" Text="00:00.000" TextAlignment="Right"  FontSize="96" Height="108" HorizontalAlignment="Right" Width="594" VerticalAlignment="Bottom" Margin="0,0,30,70"/>
+        <TextBlock x:Name="lb_best" Grid.Row="3" TextWrapping="Wrap" Text="00:00.000" TextAlignment="left" VerticalAlignment="Bottom" FontSize="96" Height="109" HorizontalAlignment="Left" Width="632" Margin="30,0,0,70"/>
+        <TextBlock x:Name="lb_lapnum" HorizontalAlignment="Right" Margin="0,0,30,176" Grid.Row="3" TextWrapping="Wrap" Text="0" VerticalAlignment="Bottom" TextAlignment="Right" FontSize="128" Width="176" Height="135"/>
+        <TextBlock x:Name="lb_team" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Team" TextAlignment="Left" VerticalAlignment="Bottom" FontSize="64" Width="358" Height="86" Grid.Row="3" Margin="30,0,0,191"/>
         <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Time remaining" TextAlignment="Center" FontSize="32" VerticalAlignment="Top" Height="38" Width="408"/>
-        <TextBlock HorizontalAlignment="Left" Margin="42,0,0,43" Grid.Row="3" TextWrapping="Wrap" FontSize="32" Text="Best lap" VerticalAlignment="Bottom" Width="232" FontStyle="Italic" Height="38"/>
-        <TextBlock HorizontalAlignment="Right" Margin="0,0,30,43" Grid.Row="3" TextWrapping="Wrap" FontSize="32" TextAlignment="Right" Text="Last lap" VerticalAlignment="Bottom" Width="160" FontStyle="Italic" Height="38"/>
+        <TextBlock HorizontalAlignment="Left" Margin="30,0,0,30" Grid.Row="3" TextWrapping="Wrap" FontSize="32" Text="Best lap" VerticalAlignment="Bottom" Width="232" FontStyle="Italic" Height="38"/>
+        <TextBlock HorizontalAlignment="Right" Margin="0,0,30,30" Grid.Row="3" TextWrapping="Wrap" FontSize="32" TextAlignment="Right" Text="Last lap" VerticalAlignment="Bottom" Width="160" FontStyle="Italic" Height="38"/>
 
     </Grid>
 </Window>

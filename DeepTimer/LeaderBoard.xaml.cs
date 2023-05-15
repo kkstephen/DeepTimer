@@ -29,12 +29,11 @@ namespace DeepTimer
         private IList<DeepMatch> bestLaps;
 
         private SerialPort sensor;
-        private Thread _service;        
+        private Thread _service; 
         
-        private DeepServer server;      
+        private DeepServer server; 
         private DeepManager manager;
         private DeepRacer racer;
-
         
         private volatile bool is_stop = true;
 
@@ -327,8 +326,7 @@ namespace DeepTimer
             } 
 
             this.setTeamLaps();
-        }
- 
+        } 
 
         private void setTeamLaps()
         {
@@ -412,18 +410,21 @@ namespace DeepTimer
             //total lap
             this.racer.Lap = ds.Count;
 
+            //show time
             this.racer.BestLap = 0;
             this.racer.LastLap = 0;
 
             if (this.racer.Lap > 0)
             {
                 //sort lap
-                var f = ds.Where(p => p.Invalid == false).OrderBy(t => t.Record).FirstOrDefault();
+                var best = ds.Where(p => p.Invalid == false).OrderBy(t => t.Record).FirstOrDefault();
 
-                if (f != null)
+                if (best != null)
                 {
-                    this.racer.BestLap = f.Record;
+                    this.racer.BestLap = best.Record;
                 }
+
+                this.racer.LastLap = ds.Last().Record;
             }
 
             //reset timer duration

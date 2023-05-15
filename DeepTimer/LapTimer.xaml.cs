@@ -30,7 +30,7 @@ namespace DeepTimer
         private TimeSpan remain_time;
         private TimeSpan elapse_time;
 
-        private DispatcherTimer timer;
+        private System.Timers.Timer timer;
 
         private long last_elapse;
 
@@ -47,10 +47,10 @@ namespace DeepTimer
             this.sw = new Stopwatch();
             this.sw.Reset();
 
-            this.timer = new DispatcherTimer();
+            this.timer = new System.Timers.Timer();
 
-            this.timer.Interval = TimeSpan.FromMilliseconds(100);
-            this.timer.Tick += Timer_Tick;
+            this.timer.Interval = 100;
+            this.timer.Elapsed += Timer_Tick;
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -63,7 +63,7 @@ namespace DeepTimer
         { 
             //count down 
             this.lb_time.Text = this.remain_time.ToString(@"mm\:ss");
-            this.lb_current.Text = elapse_time.ToString(@"mm\:ss\.f"); 
+            this.lb_current.Text = elapse_time.ToString(@"mm\:ss\.ff"); 
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -275,7 +275,7 @@ namespace DeepTimer
             this.lb_team.Text = this.Racer.Team;      
             this.lb_lapnum.Text = this.Racer.Lap.ToString();
 
-            this.lb_current.Text = "00:00.0";  
+            this.lb_current.Text = "00:00.00";  
      
             this.lb_last.Text = this.Racer.LastLap.ToTimespan(); 
             this.lb_best.Text = this.Racer.BestLap.ToTimespan();

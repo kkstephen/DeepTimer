@@ -187,7 +187,7 @@
     <Resource Include="Assets\signal_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\AWS_DeepRacer.jpg" />
+    <Resource Include="Assets\DeepRacer.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
