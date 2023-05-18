@@ -21,6 +21,7 @@ namespace DeepCore
         public int Lap { get; set; }
         public long BestLap { get; set; }
         public long LastLap { get; set; }
+        public bool IsDuty { get; set; }
 
         public TimeSpan Last_Tick { get; set; }
 
@@ -33,10 +34,13 @@ namespace DeepCore
         public DeepRacer()
         {
             testMode = false;
+            IsDuty = false;
         }
 
         public void Ready()
         {
+            this.IsDuty = true;
+
             if (OnLoad != null)
             {
                 OnLoad(this, new EventArgs());
@@ -135,6 +139,8 @@ namespace DeepCore
             {
                 OnClose(this, new EventArgs());
             }
+
+            this.IsDuty = false;
         }
 
         public void SetMode(bool isTest)

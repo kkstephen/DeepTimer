@@ -19,7 +19,7 @@
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <Grid.Background>
-            <ImageBrush ImageSource="/Assets/AWS_DeepRacer.jpg" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="/Assets/DeepRacer.png" Stretch="UniformToFill"/>
         </Grid.Background>
         <TextBlock HorizontalAlignment="Center" Grid.Row="1" TextWrapping="Wrap" Text="Time remaining" VerticalAlignment="Center" FontSize="64"/>
         <TextBlock x:Name="lb_time" HorizontalAlignment="Center" Grid.Row="2" TextAlignment="Center" TextWrapping="Wrap" Text="00:00" VerticalAlignment="Top" FontSize="320" Width="1165"/>

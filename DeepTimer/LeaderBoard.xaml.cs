@@ -553,9 +553,9 @@ namespace DeepTimer
 
         private void btn_timer_Click(object sender, RoutedEventArgs e)
         { 
-            if (this.teams.Count == 0)
+            if (this.teams.Count == 0 || this.racer.IsDuty)
             {
-                MessageBox.Show("No team found!");
+                MessageBox.Show("Can not open lap timer");
 
                 return;
             }
