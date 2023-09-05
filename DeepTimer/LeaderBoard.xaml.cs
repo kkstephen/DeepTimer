@@ -180,12 +180,20 @@ namespace DeepTimer
                 if (string.IsNullOrEmpty(port))
                     throw new ArgumentNullException("port");
 
-                this.sensor = new SerialPort(port, rates);
-
-                this.sensor.Handshake = Handshake.None;
-                this.sensor.ReadTimeout = 500;
-                this.sensor.WriteTimeout = 500;
-                this.sensor.ReadBufferSize = 1024;
+                this.sensor = new SerialPort(port)
+                {
+                    BaudRate = rates,
+                    NewLine = "\r\n",
+                    Parity = Parity.None,
+                    Handshake = Handshake.None,
+                    StopBits = StopBits.One,
+                    DataBits = 8,
+                    RtsEnable = true,
+                    DtrEnable = true,
+                    ReadBufferSize = 1024,
+                    ReadTimeout = 500,
+                    WriteTimeout = 500
+                }; 
 
                 this.sensor.DataReceived += port_received;
 
@@ -195,7 +203,7 @@ namespace DeepTimer
 
                     this.Dispatcher.InvokeAsync(() => {
                         this.lb_port.Text = port;
-                        this.lb_status.Text = "Ready.";
+                        this.lb_status.Text = "port connected.";
                     });
                 }
                 else
