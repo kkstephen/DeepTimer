@@ -244,7 +244,12 @@ namespace DeepTimer
                 {
                     this.racer.Tap();
                 }
-                
+
+                this.Dispatcher.InvokeAsync(() =>
+                {
+                    this.lb_status.Text = data.TrimEnd();
+                });
+
                 this.racer.Activity(data); 
             }
             catch (Exception ex)
@@ -883,6 +888,22 @@ namespace DeepTimer
 
             this.cbTeam.Items.Refresh();
             this.cbTeam.SelectedIndex = 0;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.teams.Count == 0 || this.racer.IsDuty)
+            {
+                MessageBox.Show("Can not open lap timer");
+
+                return;
+            }
+
+            Dashboard dash = new Dashboard();
+
+            dash.Racer = this.racer;
+
+            dash.Show();
         }
     }
 }

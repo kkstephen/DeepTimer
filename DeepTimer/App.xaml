@@ -5,9 +5,9 @@
              StartupUri="LeaderBoard.xaml">
     <Application.Resources>
         <Style x:Key="BTN_UI" TargetType="Button">
-            <Setter Property="Height" Value="48" />
-            <Setter Property="Width" Value="96" />
-            <Setter Property="FontSize" Value="24" />
+            <Setter Property="Height" Value="36" />
+            <Setter Property="Width" Value="90" />
+            <Setter Property="FontSize" Value="16" />
             <Setter Property="RenderTransformOrigin" Value="0.5,0.5" />
             <Setter Property="Template">
                 <Setter.Value>

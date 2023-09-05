@@ -12,13 +12,14 @@ using System.Diagnostics;
 using System.Windows.Media.Imaging;
 using System.Windows.Media;
 using DeepCore;
+using System.Runtime.ConstrainedExecution;
 
 namespace DeepTimer
 {
     /// <summary>
     /// Interaction logic for Timer.xaml
     /// </summary>
-    public partial class LapTimer : Window
+    public partial class Dashboard : Window
     { 
         private WindowState oldstate;
         public DeepRacer Racer { get; set; }
@@ -28,8 +29,6 @@ namespace DeepTimer
         private Stopwatch sw;
         private System.Timers.Timer timer;
 
-        private TimeSpan progress;
-        private TimeSpan remain_time;
         private TimeSpan elapse_time;
 
         private long last_elapse;
@@ -37,15 +36,13 @@ namespace DeepTimer
         private volatile bool is_end = true;
         private volatile bool is_start = false;
        
-        public LapTimer()
+        public Dashboard()
         {
-            InitializeComponent();
-
-            this.progress = TimeSpan.FromSeconds(3 * 60); 
-            this.remain_time = TimeSpan.FromSeconds(3 * 60);
+            InitializeComponent(); 
 
             this.sw = new Stopwatch();
-            this.sw.Reset();
+            this.sw.Reset(); 
+
 
             this.timer = new System.Timers.Timer();
 
@@ -59,13 +56,6 @@ namespace DeepTimer
             this.Dispatcher.InvokeAsync(updateTimer);
         }
 
-        private void updateTimer()
-        { 
-            //count down 
-            this.lb_time.Text = this.remain_time.ToString(@"mm\:ss");
-            this.lb_current.Text = elapse_time.ToString(@"mm\:ss\.ff"); 
-        }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             if (this.Racer != null)
@@ -73,12 +63,10 @@ namespace DeepTimer
                 this.Racer.OnStart += Racer_OnStart;
                 this.Racer.OnStop += Racer_OnStop;
                 this.Racer.OnReset += Racer_OnReset;
-                this.Racer.OnTouch += Racer_OnTouch;
-                this.Racer.OnChanged += Racer_OnChanged;
-                this.Racer.OnDraw += Racer_OnDraw;
+                this.Racer.OnTouch += Racer_OnTouch;  
 
                 this.Racer.Ready();
-            } 
+            }
         } 
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -98,66 +86,39 @@ namespace DeepTimer
                 this.Racer.OnStart -= Racer_OnStart;
                 this.Racer.OnStop -= Racer_OnStop;
                 this.Racer.OnReset -= Racer_OnReset;
-                this.Racer.OnTouch -= Racer_OnTouch;
-                this.Racer.OnChanged -= Racer_OnChanged;
-                this.Racer.OnDraw -= Racer_OnDraw;
+                this.Racer.OnTouch -= Racer_OnTouch; 
 
                 this.Racer.Close();
-            }
-        }
-
-        private void Window_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
-        {
-            if (e.Key == System.Windows.Input.Key.F11)
-            {
-                this.oldstate = WindowState;
-
-                WindowState = WindowState.Maximized;
-                Visibility = Visibility.Collapsed;
-                WindowStyle = WindowStyle.None;
-                ResizeMode = ResizeMode.NoResize;
-                Visibility = Visibility.Visible;
-            }
-
-            if (e.Key == System.Windows.Input.Key.Escape)
-            {
-                WindowState = oldstate;
-                WindowStyle = WindowStyle.SingleBorderWindow;
-                ResizeMode = ResizeMode.CanResize;
-            }
+            } 
         } 
 
         private void countdown_loop()
         {
             while (!this.is_end)
-            { 
-                if (sw.Elapsed.TotalMilliseconds >= progress.TotalMilliseconds)
-                {
-                    this.is_end = true;
-
-                    this.sw.Stop();
-
-                    this.Racer.Finish(DateTime.Now);
-                }
-                else
-                { 
-                    this.remain_time = progress - sw.Elapsed; 
-                }
-
+            {  
                 if (this.is_start)
                 {
-                    this.elapse_time = this.sw.Elapsed - this.Racer.Last_Tick;
+                    this.elapse_time = this.sw.Elapsed - this.Racer.Last_Tick; 
                 }
 
+                this.Dispatcher.InvokeAsync(updateTimer);
+
                 Thread.Sleep(10);
-            } 
+            }  
+
+            this.Racer.Finish(DateTime.Now);
             
             if (this.sw.IsRunning)
             {
                 this.sw.Stop();
-            } 
-            
+            }
+
             this.timer.Stop();
+        }
+
+        private void updateTimer()
+        { 
+            this.lb_current.Text = elapse_time.ToString(@"mm\:ss\.ff");
         }
 
         private void Racer_OnStart(object sender, EventArgs e)
@@ -217,71 +178,38 @@ namespace DeepTimer
 
             this.Racer.Last_Tick = TimeSpan.FromTicks(ticks_now); 
            
-            this.last_elapse = ticks_now;
-          
-            if (this.Racer.BestLap > lap_cur || this.Racer.BestLap == 0)
-            {
-                this.Racer.BestLap = lap_cur;
-            }
+            this.last_elapse = ticks_now; 
                 
-            this.Racer.Lap++;
+            this.Racer.Lap++;   
 
             this.Dispatcher.InvokeAsync(() =>
             {
                 if (!Racer.TestMode)
                 {
                     DeepLap car = new DeepLap() { Lap = this.Racer.Lap, Team = this.Racer.Team, Record = lap_cur, Date = DateTime.Now, Invalid = false };
-
+                     
                     this.Racer.Log(car);
                 }
 
-                this.lb_best.Text = this.Racer.BestLap.ToTimespan();                
-                this.lb_lapnum.Text = this.Racer.Lap.ToString();
-                
                 this.lb_last.Text = lap_cur.ToTimespan();
-            });
-        } 
-
-        private void Racer_OnDraw(object sender, EventActivityArgs e)
-        {
-            ImageBrush myBrush = new ImageBrush();
-
-            myBrush.ImageSource = new BitmapImage(new Uri(e.Data, UriKind.Absolute));
-
-            this.board.Background = myBrush;
-        }
-
-        private void Racer_OnChanged(object sender, EventReviseArgs e)
-        {
-            this.Dispatcher.InvokeAsync(() =>
-            {
-                this.lb_best.Text = e.Tick.ToTimespan();
-            });
-        }
+                this.lb_lapnum.Text = this.Racer.Lap.ToString();
+            });                
+        }  
 
         private void Racer_OnReset(object sender, EventRacerArgs e)
         {
             this.sw.Reset();
 
             this.is_end = true;
-            this.is_start = false; 
-
-            this.progress = TimeSpan.FromSeconds(e.Duration);
-            this.remain_time = TimeSpan.FromSeconds(e.Duration);
-
-            this.lb_time.Text = remain_time.ToString(@"mm\:ss");
+            this.is_start = false;   
             
-            this.last_elapse = 0;
-                    
+            this.last_elapse = 0;                    
             this.elapse_time = TimeSpan.FromSeconds(0);
-
-            this.lb_team.Text = this.Racer.Team;      
+            
+            this.lb_current.Text = "00:00.00";       
+            
             this.lb_lapnum.Text = this.Racer.Lap.ToString();
-
-            this.lb_current.Text = "00:00.00";  
-     
             this.lb_last.Text = this.Racer.LastLap.ToTimespan(); 
-            this.lb_best.Text = this.Racer.BestLap.ToTimespan();
         } 
     }
 }

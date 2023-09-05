@@ -35,9 +35,8 @@
     <Reference Include="CFS.NET">
       <HintPath>..\..\..\Project\Files\CFS.NET.dll</HintPath>
     </Reference>
-    <Reference Include="Excel.4.5, Version=2.1.2.0, Culture=neutral, PublicKeyToken=93517dbe6a4012fa, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\Project\Files\Excel.4.5.dll</HintPath>
+    <Reference Include="Excel.4.5">
+      <HintPath>..\..\..\Project\Files\excel\Excel.4.5.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

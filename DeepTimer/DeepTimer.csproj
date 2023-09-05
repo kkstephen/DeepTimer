@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Dashboard.xaml.cs">
+      <DependentUpon>Dashboard.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LeaderBoard.xaml.cs">
       <DependentUpon>LeaderBoard.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,10 @@
     <Compile Include="TimeWatch.xaml.cs">
       <DependentUpon>TimeWatch.xaml</DependentUpon>
     </Compile>
+    <Page Include="Dashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="LeaderBoard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
