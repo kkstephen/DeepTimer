@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.IO; 
 using NPOI.XSSF.UserModel;
-using NPOI.SS.UserModel;
-using Excel;
+using NPOI.SS.UserModel; 
 using System.Data;
+using Newtonsoft.Json.Linq;
+using System.Windows.Documents;
 
 namespace DeepCore
 {
@@ -69,30 +70,42 @@ namespace DeepCore
             }
         }
 
-        public static DataTable ImportXls(string filepath)
-        {
-            if (filepath.Length == 0)
-                return null;
+        public static string LoadJson(string file)
+        { 
+            var list = new JArray() as dynamic;
 
-            DataSet result = null;
-
-            using (FileStream fs = File.Open(filepath, FileMode.Open, FileAccess.Read))
+            using (FileStream fstream = new FileStream(file, FileMode.Open))
             {
-                IExcelDataReader excelReader;
+                IWorkbook wbook = new XSSFWorkbook(fstream);
 
-                if (filepath.IndexOf(".xlsx") != -1)
-                    excelReader = ExcelReaderFactory.CreateOpenXmlReader(fs);
-                else
-                    excelReader = ExcelReaderFactory.CreateBinaryReader(fs);
+                //only 1 sheet
+                ISheet sheet = wbook.GetSheetAt(0);
 
-                excelReader.IsFirstRowAsColumnNames = true;
+                var header = sheet.GetRow(0).Cells;
 
-                result = excelReader.AsDataSet();
+                for (int i = 1; i <= sheet.LastRowNum; i++)
+                {
+                    IRow row = sheet.GetRow(i);
 
-                excelReader.Close();
+                    if (row == null) continue;
+
+                    dynamic obj = new JObject();
+
+                    for (int j = 0; j < header.Count; j++)
+                    {
+                        ICell cell = row.GetCell(j);
+
+                        if (cell != null)
+                        {
+                            obj.Add(header[j].ToString(), cell.ToString());
+                        }
+                    } 
+
+                    list.Add(obj);
+                }
             }
 
-            return result.Tables[0];
+            return list.ToString();
         }
     }
 }

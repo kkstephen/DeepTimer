@@ -33,10 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CFS.NET">
-      <HintPath>..\..\..\Project\Files\CFS.NET.dll</HintPath>
-    </Reference>
-    <Reference Include="Excel.4.5">
-      <HintPath>..\..\..\Project\Files\excel\Excel.4.5.dll</HintPath>
+      <HintPath>..\..\..\AppPackage\Files\CFS.NET.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=1.2.0.246, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -67,13 +64,13 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnitODB">
-      <HintPath>..\..\..\Project\Files\UnitODB.dll</HintPath>
+      <HintPath>..\..\..\AppPackage\Files\UnitODB.dll</HintPath>
     </Reference>
     <Reference Include="UnitODB.Data">
-      <HintPath>..\..\..\Project\Files\UnitODB.Data.dll</HintPath>
+      <HintPath>..\..\..\AppPackage\Files\UnitODB.Data.dll</HintPath>
     </Reference>
     <Reference Include="UnitODB.Linq">
-      <HintPath>..\..\..\Project\Files\UnitODB.Linq.dll</HintPath>
+      <HintPath>..\..\..\AppPackage\Files\UnitODB.Linq.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -96,6 +96,7 @@ namespace DeepTimer
                 }
 
                 this.loadData();
+                this.updateRanking();
 
                 this.Dispatcher.InvokeAsync(() => {
                     this.lbDataName.Text = "Databsae: " + this.manager.Database;
@@ -843,15 +844,14 @@ namespace DeepTimer
 
                 try
                 {
-                    var table = ExcelNPOI.ImportXls(dialog.FileName);
+                    var json = ExcelNPOI.LoadJson(dialog.FileName);
+
+                    var guests = json.Deserialize<IList<Team>>();
 
                     int n = 1;
 
-                    foreach (DataRow dr in table.Rows)
-                    {
-                        Team t = new Team();
-
-                        t.Name = dr["Name"].ToString();
+                    foreach (var t in guests)
+                    {                        
                         t.Id = n++;
 
                         this.teams.Add(t);
