@@ -230,7 +230,7 @@ namespace DeepTimer
             {
                 if (!Racer.TestMode)
                 {
-                    DeepLap car = new DeepLap() { Lap = this.Racer.Lap, Team = this.Racer.Team, Record = lap_cur, Date = DateTime.Now, Invalid = false };
+                    DeepLap car = new DeepLap() { Lap = this.Racer.Lap, DeepTeam = this.Racer.Team, Record = lap_cur, Date = DateTime.Now, Invalid = false };
 
                     this.Racer.Log(car);
                 }
@@ -275,7 +275,7 @@ namespace DeepTimer
                     
             this.elapse_time = TimeSpan.FromSeconds(0);
 
-            this.lb_team.Text = this.Racer.Team;      
+            this.lb_team.Text = this.Racer.Team.Name;      
             this.lb_lapnum.Text = this.Racer.Lap.ToString();
 
             this.lb_current.Text = "00:00.00";  

@@ -17,7 +17,7 @@ namespace DeepCore
         public event EventHandler<EventActivityArgs> OnDraw;
 
         public bool IsRunning { get; set; }
-        public string Team { get; set; }
+        public Team Team { get; set; }
         public int Lap { get; set; }
         public long BestLap { get; set; }
         public long LastLap { get; set; }

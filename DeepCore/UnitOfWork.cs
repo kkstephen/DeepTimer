@@ -4,22 +4,37 @@ using UnitODB.Data;
 using UnitODB.Linq;
 
 namespace DeepCore
-{   
+{
     public class UnitOfWork : OdbContainer
     {
-        private IRepository<DeepLap> cars;
-        public IRepository<DeepLap> Cars
+        private IRepository<DeepLap> laps;
+        public IRepository<DeepLap> Laps
         {
             get
             {
-                if (this.cars == null)
+                if (this.laps == null)
                 {
-                    this.cars = this.CreateRepository<DeepLap>();
+                    this.laps = this.CreateRepository<DeepLap>();
                 }
 
-                return this.cars;
+                return this.laps;
             }
         }
+
+        private IRepository<Team> teams;
+        public IRepository<Team> Teams
+        {
+            get
+            {
+                if (this.teams == null)
+                {
+                    this.teams = this.CreateRepository<Team>();
+                }
+
+                return this.teams;
+            }
+        }
+
         public UnitOfWork(IDbContext context) : base(context)
         {
             this.Context = context;

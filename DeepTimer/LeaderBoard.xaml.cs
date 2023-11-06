@@ -24,7 +24,7 @@ namespace DeepTimer
     public partial class LeaderBoard : Window
     {
         private ObservableCollection<DeepLap> lapCache;
-        private Dictionary<string, DeepLap> teamLaps;
+        private Dictionary<int, DeepLap> teamLaps;
         private IList<Team> teams;
         private IList<DeepMatch> bestLaps;
 
@@ -60,7 +60,7 @@ namespace DeepTimer
 
             this.listView.ItemsSource = this.lapCache;
 
-            this.teamLaps = new Dictionary<string, DeepLap>();
+            this.teamLaps = new Dictionary<int, DeepLap>();
             this.teams = new List<Team>();
             this.bestLaps = new List<DeepMatch>();
             
@@ -95,9 +95,9 @@ namespace DeepTimer
                     manager.Init();
                 }
 
+                this.loadTeam();
                 this.loadData();
-                this.updateRanking();
-
+                        
                 this.Dispatcher.InvokeAsync(() => {
                     this.lbDataName.Text = "Databsae: " + this.manager.Database;
                     this.chk_update.IsChecked = this.manager.AutoRanking;
@@ -327,12 +327,25 @@ namespace DeepTimer
             });
         }
 
+        private void loadTeam()
+        { 
+            this.teams.Clear();
+
+            foreach (var t in this.manager.Unit.Teams)
+            {
+                this.teams.Add(t);
+            }
+
+            this.cbTeam.Items.Refresh();
+            this.cbTeam.SelectedIndex = 0;
+        }
+
         private void loadData()
-        {
+        {           
             this.lapCache.Clear();
             this.teamLaps.Clear();
              
-            foreach (var p in this.manager.Unit.Cars)
+            foreach (var p in this.manager.Unit.Laps)
             {
                 this.lapCache.Add(p);
                  
@@ -346,33 +359,35 @@ namespace DeepTimer
         {
             foreach (var t in teams)
             {
-                if (!this.teamLaps.ContainsKey(t.Name))
-                {
-                    DeepLap p = new DeepLap() { Team = t.Name, Record = 0, Invalid = false };
+                if (!this.teamLaps.ContainsKey(t.Id))
+                { 
+                    DeepLap p = new DeepLap() { DeepTeam = t, Record = 0, Invalid = false };
 
-                    this.teamLaps.Add(t.Name, p);
+                    this.teamLaps.Add(t.Id, p);
                 }
             }
 
             this.updateRanking();
         } 
 
-        private bool updateTeamLaps(DeepLap p)
+        private bool updateTeamLaps(DeepLap lap)
         {
-            if (this.teamLaps.ContainsKey(p.Team))
-            {
-                var item = this.teamLaps[p.Team];
+            int id = lap.DeepTeam.Id;
 
-                if (item.Record <= 0 || item.Record > p.Record)
+            if (this.teamLaps.ContainsKey(id))
+            {
+                var item = this.teamLaps[id];
+
+                if (item.Record <= 0 || item.Record > lap.Record)
                 {
-                    this.teamLaps[p.Team] = p;
+                    this.teamLaps[id] = lap;
 
                     return true;
                 }
             } 
             else
             {
-                this.teamLaps.Add(p.Team, p); 
+                this.teamLaps.Add(id, lap); 
 
                 return true;
             }
@@ -417,9 +432,9 @@ namespace DeepTimer
 
         private void reset_timer()
         { 
-            this.racer.Team = this.cbTeam.Text;
+            this.racer.Team = this.cbTeam.SelectedItem as Team;
 
-            var ds = this.lapCache.Where(p => p.Team == this.racer.Team).ToList();
+            var ds = this.lapCache.Where(p => p.DeepTeam.Id == this.racer.Team.Id).ToList();
 
             //total lap
             this.racer.Lap = ds.Count;
@@ -641,12 +656,12 @@ namespace DeepTimer
 
             if (item.Invalid)
             {
-                this.teamLaps.Remove(item.Team);
+                this.teamLaps.Remove(item.Id);
             }
 
-            DeepLap p = new DeepLap() { Lap = 0, Invalid = true, Team = item.Team, Record = 0 };
+            DeepLap p = new DeepLap() { Lap = 0, Invalid = true, DeepTeam = item.DeepTeam, Record = 0 };
 
-            var laps = this.lapCache.Where(t => t.Team == item.Team && !t.Invalid).OrderBy(x => x.Record).ToList();
+            var laps = this.lapCache.Where(t => t.DeepTeam.Id == item.DeepTeam.Id && !t.Invalid).OrderBy(x => x.Record).ToList();
 
             if (laps.Count > 0)
             {
@@ -818,12 +833,11 @@ namespace DeepTimer
                 {
                     Team t = new Team();
                     
-                    t.Name = dialog.TeamName;
-                    t.Id = this.teams.Count + 1;
+                    t.Name = dialog.TeamName; 
                    
-                    this.teams.Add(t);
+                    this.manager.Unit.Teams.Add(t);
 
-                    this.cbTeam.Items.Refresh();
+                    this.loadTeam();
 
                     this.setTeamLaps();
                 }
@@ -839,63 +853,41 @@ namespace DeepTimer
             dialog.Filter = "Excel 2013|*.xlsx|Excel 2007|*.xls|All files (*.*)|*.*";
 
             if (dialog.ShowDialog() == true)
-            {
-                this.teams.Clear();
-
+            { 
                 try
                 {
                     var json = ExcelNPOI.LoadJson(dialog.FileName);
-
+                                        
                     var guests = json.Deserialize<IList<Team>>();
 
-                    int n = 1;
+                    using (var ct = this.manager.GetContainer()) 
+                    {
+                        ct.AutoCommit = false;
 
-                    foreach (var t in guests)
-                    {                        
-                        t.Id = n++;
+                        foreach (var t in guests)
+                        { 
+                            ct.RegisterAdd(t);
+                        }
 
-                        this.teams.Add(t);
+                        ct.Commit();
                     }
+
+                    this.loadTeam();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "DeepTimer", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-
-                this.cbTeam.Items.Refresh();
-
-                this.cbTeam.SelectedIndex = 0;
+                } 
 
                 this.setTeamLaps();
             }
         }
 
-        private void btn_copyteam_Click(object sender, RoutedEventArgs e)
+        private void btn_load_Click(object sender, RoutedEventArgs e)
         {
-            int n = 1;
+            this.loadTeam();
 
-            foreach (var t in this.teamLaps.Keys)
-            {
-                Team team = new Team();
-            
-                team.Name = t;
-                team.Id = n;
-
-                this.teams.Add(team);
-
-                n++;
-            }
-
-            this.cbTeam.Items.Refresh();
-            this.cbTeam.SelectedIndex = 0;
-        }
-
-        private void btn_clearteam_Click(object sender, RoutedEventArgs e)
-        {
-            this.teams.Clear();
-
-            this.cbTeam.Items.Refresh();
-            this.cbTeam.SelectedIndex = 0;
+            this.setTeamLaps();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -912,6 +904,38 @@ namespace DeepTimer
             dash.Racer = this.racer;
 
             dash.Show();
+        }
+
+        private void btn_edit_Click(object sender, RoutedEventArgs e)
+        {
+            var t = this.cbTeam.SelectedItem as Team;
+
+            if (t != null) 
+            {
+                TeamWin dialog = new TeamWin();
+
+                dialog.Owner = this;
+
+                dialog.TeamName = t.Name;
+
+                dialog.ShowDialog();
+
+                if (dialog.DialogResult.HasValue && dialog.DialogResult.Value)
+                {
+                    if (!string.IsNullOrEmpty(dialog.TeamName))
+                    { 
+                        t.Name = dialog.TeamName;
+
+                        this.manager.Unit.Teams.Update(t);
+
+                        this.loadTeam();
+
+                        this.setTeamLaps();
+                    }
+                }
+
+                dialog.Close(); 
+            }
         }
     }
 }

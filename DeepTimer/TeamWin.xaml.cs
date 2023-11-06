@@ -15,6 +15,11 @@ namespace DeepTimer
             {
                 return this.tbName.Text;
             }
+
+            set
+            {
+                this.tbName.Text = value;
+            }
         }
 
         public TeamWin()

@@ -30,9 +30,8 @@
                     <MenuItem Header="_Export" Click="btn_export_Click" />
                 </MenuItem>
                 <MenuItem Header="Team">
-                    <MenuItem Header="_Load" Click="btn_team_Click" />
-                    <MenuItem Header="_Copy" Click="btn_copyteam_Click" />
-                    <MenuItem Header="_Clear" Click="btn_clearteam_Click" />
+                    <MenuItem Header="_Import" Click="btn_team_Click" />
+                    <MenuItem Header="_Refresh" Click="btn_load_Click" /> 
                 </MenuItem>
                 <MenuItem Header="_Server">
                     <MenuItem Header="_Start" Click="server_start_Click" />
@@ -48,7 +47,7 @@
         <ListView x:Name="listView" Margin="2,3,5,0" Grid.Column="1" SelectionChanged="listView_SelectionChanged" Grid.Row="1">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Team}" />
+                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding DeepTeam.Name}" />
                     <GridViewColumn Header="Lap" Width="60" DisplayMemberBinding="{Binding Lap}" />
                     <GridViewColumn Header="Time" Width="150" DisplayMemberBinding="{Binding Record, Converter={StaticResource DateTimeConver}}" />
                     <GridViewColumn Header="Ticks" Width="150" DisplayMemberBinding="{Binding Record}" />
@@ -77,7 +76,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="No" Width="40" DisplayMemberBinding="{Binding No}" />
-                    <GridViewColumn Header="Team" Width="100" DisplayMemberBinding="{Binding Lap.Team}" />
+                    <GridViewColumn Header="Team" Width="100" DisplayMemberBinding="{Binding Lap.DeepTeam.Name}" />
                     <GridViewColumn Header="Result" Width="100" DisplayMemberBinding="{Binding Result}" />
                 </GridView>
             </ListView.View>
@@ -105,11 +104,12 @@
         <TextBlock x:Name="lbDataName" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,292,7" Grid.Row="2" TextWrapping="Wrap" Text="DB" VerticalAlignment="Bottom" Width="178" Height="16"/>
         <TextBlock x:Name="lb_log" Grid.Column="1" HorizontalAlignment="Right" Grid.Row="2" TextWrapping="Wrap" Text="Stop" VerticalAlignment="Bottom" Margin="0,0,104,7" Width="183" Height="16"/>
 
-        <Button x:Name="btn_update" Style="{DynamicResource BTN_UI}" Content="Ranking" HorizontalAlignment="Right" Margin="0,0,295,30" Grid.Row="2" VerticalAlignment="Bottom"  Click="btn_update_Click" Grid.Column="1"/>
-        <Button x:Name="btn_team" Grid.Column="1" Content="Add Team" HorizontalAlignment="Right" Margin="0,0,199,30" Grid.Row="2" VerticalAlignment="Bottom" Style="{DynamicResource BTN_UI}"   Click="btn_Addteam_Click" />
+        <Button x:Name="btn_update" Style="{DynamicResource BTN_UI}" Content="Ranking" HorizontalAlignment="Right" Margin="0,0,199,30" Grid.Row="2" VerticalAlignment="Bottom"  Click="btn_update_Click" Grid.Column="1"/>
+        <Button x:Name="btn_team" Grid.Column="1" Content="Add Team" HorizontalAlignment="Right" Margin="0,0,360,96" Grid.Row="2" VerticalAlignment="Bottom" Style="{DynamicResource BTN_UI}"   Click="btn_Addteam_Click" />
         <CheckBox x:Name="chk_update" Grid.Column="1" Content="Auto Ranking" HorizontalAlignment="Right" Margin="0,0,481,123" Grid.Row="2" VerticalAlignment="Bottom" Click="chk_update_Click" Height="15" Width="92"/>
         <CheckBox x:Name="chk_Test" Grid.Column="1" Content="Test Mode" HorizontalAlignment="Right" Margin="0,0,481,99" Grid.Row="2" VerticalAlignment="Bottom" Width="92" Click="chk_Test_Click" Height="15"/>
         <Button Grid.Column="1" Style="{DynamicResource BTN_UI}" Content="Dashboard" HorizontalAlignment="Right" Margin="0,0,199,102" Grid.Row="2" VerticalAlignment="Bottom" Click="Button_Click"/>
+        <Button x:Name="btn_edit" Grid.Column="1" Content="Edit Team" HorizontalAlignment="Left" Margin="181,102,0,0" Grid.Row="2" Style="{DynamicResource BTN_UI}" VerticalAlignment="Top" Click="btn_edit_Click"/>
 
     </Grid>
 </Window>
