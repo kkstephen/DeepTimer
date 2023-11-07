@@ -55,7 +55,7 @@ namespace DeepCore
                 IRow xlsRow = sheet.CreateRow(rowIndex);
 
                 xlsRow.CreateCell(colIndex++).SetCellValue(rowIndex);
-                xlsRow.CreateCell(colIndex++).SetCellValue(item.DeepTeam.Name);
+                xlsRow.CreateCell(colIndex++).SetCellValue(item.Team.Name);
                 xlsRow.CreateCell(colIndex++).SetCellValue(item.Record.ToTimespan());
                 xlsRow.CreateCell(colIndex++).SetCellValue(item.Record);
                 xlsRow.CreateCell(colIndex++).SetCellValue(item.Lap);

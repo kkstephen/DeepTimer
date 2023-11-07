@@ -361,7 +361,7 @@ namespace DeepTimer
             {
                 if (!this.teamLaps.ContainsKey(t.Id))
                 { 
-                    DeepLap p = new DeepLap() { DeepTeam = t, Record = 0, Invalid = false };
+                    DeepLap p = new DeepLap() { Team = t, Record = 0, Invalid = false };
 
                     this.teamLaps.Add(t.Id, p);
                 }
@@ -372,7 +372,7 @@ namespace DeepTimer
 
         private bool updateTeamLaps(DeepLap lap)
         {
-            int id = lap.DeepTeam.Id;
+            int id = lap.Team.Id;
 
             if (this.teamLaps.ContainsKey(id))
             {
@@ -434,7 +434,7 @@ namespace DeepTimer
         { 
             this.racer.Team = this.cbTeam.SelectedItem as Team;
 
-            var ds = this.lapCache.Where(p => p.DeepTeam.Id == this.racer.Team.Id).ToList();
+            var ds = this.lapCache.Where(p => p.Team.Id == this.racer.Team.Id).ToList();
 
             //total lap
             this.racer.Lap = ds.Count;
@@ -659,9 +659,9 @@ namespace DeepTimer
                 this.teamLaps.Remove(item.Id);
             }
 
-            DeepLap p = new DeepLap() { Lap = 0, Invalid = true, DeepTeam = item.DeepTeam, Record = 0 };
+            DeepLap p = new DeepLap() { Lap = 0, Invalid = true, Team = item.Team, Record = 0 };
 
-            var laps = this.lapCache.Where(t => t.DeepTeam.Id == item.DeepTeam.Id && !t.Invalid).OrderBy(x => x.Record).ToList();
+            var laps = this.lapCache.Where(t => t.Team.Id == item.Team.Id && !t.Invalid).OrderBy(x => x.Record).ToList();
 
             if (laps.Count > 0)
             {

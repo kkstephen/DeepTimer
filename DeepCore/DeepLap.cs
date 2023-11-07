@@ -6,7 +6,7 @@ namespace DeepCore
 {
     public class DeepLap : OdbEntity, INotifyPropertyChanged
     {
-        public Team DeepTeam { get; set; }
+        public Team Team { get; set; }
 
         //public string Team { get; set; }
 

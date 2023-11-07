@@ -125,15 +125,15 @@
     <Resource Include="icon\live_screen.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\AWS_LEADER.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\stack-line.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\stack-no-1.png" />
     <Resource Include="Assets\stack-no-2.png" />
     <Resource Include="Assets\stack-no-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\ranking.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

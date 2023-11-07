@@ -230,7 +230,7 @@ namespace DeepTimer
             {
                 if (!Racer.TestMode)
                 {
-                    DeepLap car = new DeepLap() { Lap = this.Racer.Lap, DeepTeam = this.Racer.Team, Record = lap_cur, Date = DateTime.Now, Invalid = false };
+                    DeepLap car = new DeepLap() { Lap = this.Racer.Lap, Team = this.Racer.Team, Record = lap_cur, Date = DateTime.Now, Invalid = false };
 
                     this.Racer.Log(car);
                 }

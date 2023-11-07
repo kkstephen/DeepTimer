@@ -47,7 +47,7 @@
         <ListView x:Name="listView" Margin="2,3,5,0" Grid.Column="1" SelectionChanged="listView_SelectionChanged" Grid.Row="1">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding DeepTeam.Name}" />
+                    <GridViewColumn Header="Name" Width="120" DisplayMemberBinding="{Binding Team.Name}" />
                     <GridViewColumn Header="Lap" Width="60" DisplayMemberBinding="{Binding Lap}" />
                     <GridViewColumn Header="Time" Width="150" DisplayMemberBinding="{Binding Record, Converter={StaticResource DateTimeConver}}" />
                     <GridViewColumn Header="Ticks" Width="150" DisplayMemberBinding="{Binding Record}" />
@@ -68,7 +68,7 @@
 
         <Button x:Name="btn_timer" Content="Lap Timer" HorizontalAlignment="Right" Margin="0,0,104,102" Grid.Row="2" VerticalAlignment="Bottom" Style="{DynamicResource BTN_UI}" Click="btn_timer_Click" Grid.Column="1"   />
         <TextBlock x:Name="lb_port" HorizontalAlignment="Left" Margin="10,0,0,7" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="60" />
-        <TextBlock x:Name="lb_status" HorizontalAlignment="Left" Margin="88,0,0,7" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="171" />
+        <TextBlock x:Name="lb_status" HorizontalAlignment="Left" Margin="88,0,0,7" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="209" Grid.ColumnSpan="2" />
         <Button x:Name="btn_stopwatch" Content="Stop Watch" HorizontalAlignment="Right" Margin="0,0,10,103" Grid.Row="2" VerticalAlignment="Bottom" Style="{DynamicResource BTN_UI}" Click="btn_stopwatch_Click" Grid.Column="1" />
         <Button x:Name="btn_tigger" Content="TAP" HorizontalAlignment="Right" Margin="0,0,104,30" Grid.Row="2" VerticalAlignment="Bottom" Style="{DynamicResource BTN_UI}" Click="btn_tigger_Click" Grid.Column="1" />
 
@@ -76,7 +76,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="No" Width="40" DisplayMemberBinding="{Binding No}" />
-                    <GridViewColumn Header="Team" Width="100" DisplayMemberBinding="{Binding Lap.DeepTeam.Name}" />
+                    <GridViewColumn Header="Team" Width="100" DisplayMemberBinding="{Binding Lap.Team.Name}" />
                     <GridViewColumn Header="Result" Width="100" DisplayMemberBinding="{Binding Result}" />
                 </GridView>
             </ListView.View>
